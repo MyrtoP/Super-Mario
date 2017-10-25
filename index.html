@@ -29,7 +29,7 @@ body {
 
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
-			this.load.spritesheet('tile', 'assets/mario_tiles_by_bacteriophage_on_mfgg__by_toughluigi-d8yu4g9.png',16,16);
+			//this.load.spritesheet('tile', 'assets/mario_tiles_by_bacteriophage_on_mfgg__by_toughluigi-d8yu4g9.png',16,16);
 			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('goomba','imageedit_6_8547903336.png',16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
@@ -51,7 +51,8 @@ body {
 
 			map = game.add.tilemap('level');
 			//map.addTilesetImage('tiles','tiles','tile','tile','background','background');
-			map.addTilesetImage('tiles','tiles','tile','tile');
+			//map.addTilesetImage('tiles','tiles','tile','tile');
+			map.addTilesetImage('tiles','tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
