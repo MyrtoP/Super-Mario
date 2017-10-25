@@ -33,7 +33,7 @@ body {
 			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('goomba','imageedit_6_8547903336.png',16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-			this.load.spritesheet('background', 'assets/be56bec197a40ccd5eb10eb54643becf.png',16, 16);
+			//this.load.spritesheet('background', 'assets/be56bec197a40ccd5eb10eb54643becf.png',16, 16);
                         
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
@@ -46,11 +46,12 @@ body {
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
-			game.stage.backgroundImage = 'be56bec197a40ccd5eb10eb54643becf.png';
-			//game.stage.backgroundColor = 'transparent';
+			//game.stage.backgroundImage = 'be56bec197a40ccd5eb10eb54643becf.png';
+			game.stage.backgroundColor = '#99ccff';
 
 			map = game.add.tilemap('level');
-			map.addTilesetImage('tiles','tiles','tile','tile','background','background');
+			//map.addTilesetImage('tiles','tiles','tile','tile','background','background');
+			map.addTilesetImage('tiles','tiles','tile','tile');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
