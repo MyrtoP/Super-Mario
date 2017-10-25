@@ -29,11 +29,12 @@ body {
 
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
-			//this.load.spritesheet('goomba', 'assets/3DS - Mario & Luigi Dream Team - Big Tail Goomba.png', 16, 16);
-			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
-			this.load.spritesheet('small_goomba','goomba1.png',16, 16);
+			this.load.spritesheet('tile', 'assets/mario_tiles_by_bacteriophage_on_mfgg__by_toughluigi-d8yu4g9.png',16,16);
+			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
+			this.load.spritesheet('goomba','imageedit_6_8547903336.png',16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-
+			this.load.spritesheet('background', 'assets/be56bec197a40ccd5eb10eb54643becf.png',16, 16);
+                        
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
 		}
@@ -49,7 +50,7 @@ body {
 			//game.stage.backgroundColor = 'transparent';
 
 			map = game.add.tilemap('level');
-			map.addTilesetImage('tiles', 'tiles');
+			map.addTilesetImage('tiles','tiles','tile','tile');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
@@ -66,7 +67,7 @@ body {
 
 			goombas = game.add.group();
 			goombas.enableBody = true;
-			map.createFromTiles(1, null, 'goomba1', 'stuff', goombas);
+			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
 			goombas.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
 					2, true);
 			goombas.callAll('animations.play', 'animations', 'walk');
