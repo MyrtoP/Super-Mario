@@ -37,7 +37,6 @@ body {
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('sfx', [ 'Super-Mario/audio/Europe - The Final Countdown (Official Video).mp3','Super-Mario/audio/bgm.ogg' ]);
 		}
-                 var music;
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
@@ -48,8 +47,8 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			
 			//audio sprite
-			music = game.add.audio('sfx');
-			music.play()
+			var music = game.add.audio('sfx');
+			music.play();
 		       // music.allowMultiple = false;
 			
 			map = game.add.tilemap('level');
