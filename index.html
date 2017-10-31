@@ -21,7 +21,7 @@ body {
 		}, false, false);
 		//Score as global variables
  		var score = 0;
-		var scoreText;	
+		var scoreDisplay;	
 		
 		function preload() {
 
@@ -147,7 +147,7 @@ body {
 			coin.kill();
 			//INCREMENT SCORE
 			score+=1;
-			scoreText.text = "Score: " + score;
+			scoreDisplay.text = "Score: " + score;
 		}
 
 		function goombaOverlap(player, goomba) {
