@@ -49,10 +49,6 @@ body {
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 			
-			//score variable
-			var score = 0;
-			var scoreText;
-			
 			game.stage.backgroundColor = '#5c94fc';
 				   
 			//audio sprite
@@ -127,6 +123,7 @@ body {
 					player.goesRight = true;
 				} else {
 					player.animations.stop();
+					//!!!edo otan pe8ainei na 3ekinaei 3ana to paixnidi
 					if (player.goesRight)
 						player.frame = 0;
 					else
