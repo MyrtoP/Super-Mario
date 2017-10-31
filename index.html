@@ -95,13 +95,12 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			//score text
 			var score = 0;
-			game.add.text(30, 20, "SCORE:", { font: "bold 12px sans-serif",
+			/*game.add.text(30, 20, "SCORE:", { font: "bold 12px sans-serif",
 			fill: "#ffffff"});
 			scoreDisplay = game.add.text(80, 19, score,{ font: "bold 14px sans-serif",
 			fill: "#46c0f9",
-			align: "center" });
-			//scoreDisplay = game.add.text(80, 19, score,{ font: "bold 32px ",fill: "#ffffff",});
-			//scoreText = game.add.text(16,16,"-",{font:"bold 32px Arial"}); 
+			align: "center" });*/
+			scoreDisplay = game.add.text(16,16,"-",{font:"bold 32px Arial"}); 
 
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -146,7 +145,7 @@ body {
 			coin.kill();
 			//INCREMENT SCORE
 			score+=1;
-			scoreDisplay.text = score;
+			scoreDisplay.text = "Score: " + score;
 		}
 
 		function goombaOverlap(player, goomba) {
