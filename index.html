@@ -19,7 +19,10 @@ body {
 			create : create,
 			update : update
 		}, false, false);
-
+		//Score as global variables
+ 		var score = 0;
+		var scoreDisplay;
+		
 		function preload() {
 
 			//  We need this because the assets are on github pages
@@ -95,8 +98,16 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 			//score text
-			scoreText = game.add.text(16,16,'Score:0',{fontSize:'32px',fill:#000});
-		}
+			var score = 0;
+
+			game.add.text(30, 20, "SCORE:", { font: "bold 12px sans-serif",
+			fill: "#46c0f9",
+			align: "center" });
+
+			scoreDisplay = game.add.text(80, 19, score,{ font: "bold 14px sans-serif",
+			fill: "#46c0f9",
+			align: "center" });
+			}
 
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -138,6 +149,9 @@ body {
 
 		function coinOverlap(player, coin) {
 			coin.kill();
+			//INCREMENT SCORE
+			score+=1;
+			scoreDisplay.text = score;
 		}
 
 		function goombaOverlap(player, goomba) {
