@@ -27,18 +27,12 @@ body {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 			
-                        this.load.image('picture','assets/picture.png',16,16);
-			
 			this.load.spritesheet('tiles', '/assets/super_mario_tiles.png', 16,16);
-			
 			//this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/mygoomba.png', 16, 16);
-			
 			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
-			
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
 			//this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-			
 			this.load.tilemap('level', 'assets/super_mario_mapnewnew.json', null,
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
@@ -50,8 +44,8 @@ body {
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
-			//game.stage.backgroundColor = '#5c94fc';
-			game.stage.backgroundImage = 'picture';
+			game.stage.backgroundColor = '#5c94fc';
+			
 			//audio sprite
 			var music = game.add.audio("sfx");
 			music.play();
