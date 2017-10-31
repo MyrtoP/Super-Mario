@@ -21,7 +21,7 @@ body {
 		}, false, false);
 		//Score as global variables
  		var score = 0;
-		var scoreDisplay;
+		var scoreText;
 		
 		function preload() {
 
@@ -103,7 +103,7 @@ body {
 			fill: "#46c0f9",
 			align: "center" });*/
 			//scoreDisplay = game.add.text(80, 19, score,{ font: "bold 32px ",fill: "#ffffff",});
-			scoreDisplay = game.add.text(16,16,"-",{font:"bold 32px Arial"}); 
+			scoreText = game.add.text(16,16,"-",{font:"bold 32px Arial"}); 
 
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -148,7 +148,7 @@ body {
 			coin.kill();
 			//INCREMENT SCORE
 			score+=1;
-			scoreDisplay.text = score;
+			scoreText = "Score :" +  score;
 		}
 
 		function goombaOverlap(player, goomba) {
