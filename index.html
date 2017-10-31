@@ -40,10 +40,6 @@ body {
 
 			this.load.tilemap('level', 'assets/super_mario_mapnewnew.json', null,
 					Phaser.Tilemap.TILED_JSON);
-			//this.load.tilemap('level', 'assets/super_mario_mapnew.json', null,
-					//Phaser.Tilemap.TILED_JSON);
-			
-			//this.load.audio('coin',['audio/coin.wav']);
 			this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
 		}
 		function create() {
@@ -69,8 +65,6 @@ body {
 			layer = map.createLayer('solid');
 			layer.resizeWorld();
 
-			//var sound = game.add.audio("coin");
-			//sound.paly();
 			coins = game.add.group();
 			coins.enableBody = true;
 			map.createFromTiles(2, null, 'coin', 'stuff', coins);
