@@ -19,9 +19,6 @@ body {
 			create : create,
 			update : update
 		}, false, false);
-		//Score as global variables
- 		//var score = 0;
-		//var scoreDisplay;	
 		
 		function preload() {
 
@@ -30,7 +27,7 @@ body {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 			
-			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,16);
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/mygoomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
@@ -90,16 +87,6 @@ body {
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
-			//score text
-			/*var score = 0;
-			game.add.text(30, 20, "SCORE:", { font: "bold 12px sans-serif",
-			fill: "#46c0f9",
-			align: "center" });
-
-			scoreDisplay = game.add.text(80, 19, score,{ font: "bold 14px sans-serif",
-			fill: "#46c0f9",
-			align: "center" }); */
-			//scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -119,7 +106,6 @@ body {
 					player.goesRight = true;
 				} else {
 					player.animations.stop();
-					//!!!edo otan pe8ainei na 3ekinaei 3ana to paixnidi
 					if (player.goesRight)
 						player.frame = 0;
 					else
@@ -142,9 +128,6 @@ body {
 
 		function coinOverlap(player, coin) {
 			coin.kill();
-			//INCREMENT SCORE
-			/*score+=1;
-			scoreDisplay.text = "Score: " + score; */
 		}
 
 		function goombaOverlap(player, goomba) {
