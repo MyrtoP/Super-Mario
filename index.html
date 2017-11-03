@@ -38,7 +38,11 @@ body {
 			this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
-			
+			//Created a Sprite with fixedToCamera = true  var sprite = game.add.sprite(0,0);sprite.fixedToCamera = true;
+			//addChild of my text at x:0, y:0 var text = game.add.text(0,0,"Score: ");sprite.addChild(text);
+			//position the cameraOffset of my Spritesprite.cameraOffset.x = 10;sprite.cameraOffset.y = 100;
+
+
 		}
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -93,6 +97,7 @@ body {
 			//score text
 			var score = 0;
 			scoreDisplay = game.add.text(16, 16, 'score: 0', { fontSize: '22px', fill: '#0D0D0D' });
+			game.camera.follow(scoreDisplay); 
 			
 		}
 		function update() {
