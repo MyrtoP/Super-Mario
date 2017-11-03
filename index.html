@@ -96,15 +96,15 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			//score text
 			var score = 0;
-			scoreDisplay = game.add.text(10, 10, 'Score: 0', { fontSize: '12px', fill: '#0D0D0D' });
+			scoreDisplay = game.add.text(10, 10, 'Score: 0', { fontSize: '12px', fill: '#FFFFFF' });
 			scoreDisplay.fixedToCamera = true;
 			
 			 //  Lives
-		         livesText = game.add.text(10, 10, 'Lives: ', { fontSize: '12px', fill: '#9C0913' });
+		         livesText = game.add.text(game.world.width - 100,10, 'Lives: ', { fontSize: '12px', fill: '#9C0913' });
 			 livesText.fixedToCamera = true;
 			
 			//Bonus
-			bonusText = game.add.text(10, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0BB9B1'});
+			bonusText = game.add.text(10, 10, 'Bonus: 0', {fontSize: '12px', fill:'#A4A4A4'});
 			bonusText.fixedToCamera = true;
 
 		}
