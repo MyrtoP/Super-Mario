@@ -20,9 +20,11 @@ body {
 			update : update
 		}, false, false);
 		
-		//Score as global variables
+		//Score and Live as global variables
  		  var score = 0;
 		  var scoreDisplay;
+		  var lives = 3;
+		  var livesText;
 		
 		function preload() {
 
@@ -92,9 +94,13 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			//score text
 			var score = 0;
-			scoreDisplay = game.add.text(10, 10, 'score: 0', { fontSize: '16px', fill: '#0D0D0D' });
+			scoreDisplay = game.add.text(10, 10, 'Score: 0', { fontSize: '12px', fill: '#0D0D0D' });
 			scoreDisplay.fixedToCamera = true;
 			
+			 //  Lives
+		         livesText = game.add.text(10, 10, 'Lives : ', { fontSize: '12px ', fill: '#FEFFFF' });
+			 livesText.fixedToCamera = true;
+
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -151,11 +157,24 @@ body {
 					goomba.kill();
 				});
 			} else {
+				lives --;
+				livesText.text = "Lives:" + lives;
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true;
+					
+					/*if(life<=0){
+						var endsound = new Audio('audio/end.wav');
+						endsound.play()
+						game.paused = true;
+					}else{
+						player.body.enable = true;
+						player.x=16;
+						player.y = game.world.height - 48;
+					}
+					*/
 				});
 			}
 		}
