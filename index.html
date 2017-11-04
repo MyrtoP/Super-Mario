@@ -27,11 +27,10 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
+		  var endText;
 		
 		function preload() {
 
-			//  We need this because the assets are on github pages
-			//  Remove the next 2 lines if running locally
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 			
@@ -170,19 +169,25 @@ body {
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
+				music.stop(); //stop music
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
 						game.paused = true;
-						stateText.text="GAME OVER";
-						stateText.visible = true;
+						endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
+						//stateText.text="GAME OVER";
+						//stateText.visible = true;
+						//game.restart(); //restart game
+						this.game.state.restart();
 					}
 					else
 					{
 					 	player.body.enable = false;
 						player.x=16;
 						player.y = game.world.height - 48;
-					        explosion.get.reset(player.body.x, player.body.y)
+					        explosion.get.reset(player.body.x, player.body.y);
+						//player.resetPosition();
+						//
 					}
 					
 				});
