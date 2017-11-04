@@ -175,7 +175,6 @@ body {
 					{
 						game.paused = true;
 						endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
-						//stateText.text="GAME OVER";
 						//stateText.visible = true;
 						//game.restart(); //restart game
 						game.state.restart();
@@ -185,9 +184,9 @@ body {
 					 	player.body.enable = false;
 						player.x=16;
 						player.y = game.world.height - 48;
-					        explosion.get.reset(player.body.x, player.body.y);
-						//player.resetPosition();
-						//
+					        //explosion.get.reset(player.body.x, player.body.y);
+						player.resetPosition(player.body.x, player.body.y);
+						
 					}
 					
 				});
