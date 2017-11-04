@@ -94,17 +94,16 @@ body {
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
-			//score text
-			var score = 0;
+			//score
 			scoreDisplay = game.add.text(10, 10, 'Score: 0', { fontSize: '12px', fill: '#FFFFFF' });
 			scoreDisplay.fixedToCamera = true;
 			
-			 //  Lives
+			 //Lives
 		         livesText = game.add.text(1000,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913' ,align: ''});
 			 livesText.fixedToCamera = true;
 			
 			//Bonus
-			bonusText = game.add.text(-1200, 10, 'Bonus: 0', {fontSize: '12px', fill:'#A4A4A4'});
+			bonusText = game.add.text(-1200, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 
 		}
@@ -161,6 +160,7 @@ body {
 				player.body.velocity.y = -80;
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
+					//increment bonus
 					bonus+=1;
 					bonusText.text = "Bonus: " + bonus;
 				});
@@ -182,7 +182,7 @@ body {
 					 	player.body.enable = false;
 						player.x=16;
 						player.y = game.world.height - 48;
-						// explosion.get.reset(player.body.x, player.body.y)
+					        explosion.get.reset(player.body.x, player.body.y)
 					}
 					
 				});
