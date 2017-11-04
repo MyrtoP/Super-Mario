@@ -100,10 +100,10 @@ body {
 			scoreDisplay.fixedToCamera = true;
 			
 			 //  Lives
-		         livesText = game.add.text(10,10, 'Lives: ', { fontSize: '12px', fill: '#9C0913' });
+		         livesText = game.add.text(180,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913' ,align: ''});
 			 livesText.fixedToCamera = true;
 			 //livesText.anchor.setTo(toRight); //text position
-			//liveText.align = ();
+			//liveText.align = (); game.add.text(game.world.width - 100, 10, 'Lives : 
 			//livesText.boundsAlignH = 'left';
 			
 			//Bonus
@@ -184,6 +184,8 @@ body {
 						player.x=16;
 						player.y = game.world.height - 48;
 						// explosion.get.reset(player.body.x, player.body.y)
+						/*stateText.text="GAME OVER";stateText.visible = true; 
+						*/
 					}
 					
 				});
