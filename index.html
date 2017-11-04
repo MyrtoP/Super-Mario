@@ -169,14 +169,14 @@ body {
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
-				music.stop(); //stop music
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
 						game.paused = true;
+						music.stop(); //stop music
 						//endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
 						//stateText.visible = true;
-						//game.restart(); //restart game
+						game.restart(); //restart game
 						//game.state.restart();
 					}
 					else
