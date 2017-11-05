@@ -147,6 +147,8 @@ body {
 
 		function coinOverlap(player, coin) {
 			coin.kill();
+			var coinSound = new Audio('audio/coin.wav');
+			coinSound.play();
 			//INCREMENT SCORE
 			score+=1;
 			scoreDisplay.text = "Score: " + score; 
@@ -173,8 +175,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						//endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
-						//stateText.visible = true;
+						endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
+						stateText.visible = true;
 						game.paused = true;
 					}
 					else
