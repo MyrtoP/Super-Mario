@@ -175,7 +175,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						 var endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '40px', fill:'#0B243B', align: 'center'});
+						 var endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '20px', fill:'#FBEFEF', align: 'center'});
 						endText.visible = true;
 						game.paused = true;
 						music.stop();
