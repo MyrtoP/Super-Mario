@@ -52,7 +52,7 @@ body {
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 			
 			game.stage.backgroundColor = '#5c94fc';
-			background = game.add.tileSprite(0, 0, 300, 300, "background");
+			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -99,11 +99,11 @@ body {
 			scoreDisplay.fixedToCamera = true;
 			
 			 //Lives
-		         livesText = game.add.text(30,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
+		         livesText = game.add.text(50,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
 			 livesText.fixedToCamera = true;
 			
 			//Bonus
-			bonusText = game.add.text(60, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
+			bonusText = game.add.text(80, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 
 		}
