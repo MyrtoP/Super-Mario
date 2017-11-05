@@ -41,7 +41,7 @@ body {
 			this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
-			this.load.image("background", "assets/picture.jpg");
+			game.load.image("background", "assets/picture.jpg");
 			
 		}
 		function create() {
@@ -51,8 +51,8 @@ body {
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 			
-			//game.stage.backgroundColor = '#5c94fc';
-			background = game.add.tileSprite(0, 0, 1000, 600, "background");
+			game.stage.backgroundColor = '#5c94fc';
+			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -61,7 +61,6 @@ body {
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
-
 			map.createLayer('background');
 
 			layer = map.createLayer('solid');
