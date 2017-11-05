@@ -41,7 +41,7 @@ body {
 			this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,
 					Phaser.Tilemap.TILED_JSON);
 			this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
-			game.load.image("background", "assets/picture.jpg");
+			game.load.image("background", "assets/picture.png");
 			
 		}
 		function create() {
@@ -99,11 +99,11 @@ body {
 			scoreDisplay.fixedToCamera = true;
 			
 			 //Lives
-		         livesText = game.add.text(100,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
+		         livesText = game.add.text(180,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
 			 livesText.fixedToCamera = true;
 			
 			//Bonus
-			bonusText = game.add.text(120, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
+			bonusText = game.add.text(200, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 
 		}
