@@ -99,11 +99,11 @@ body {
 			scoreDisplay.fixedToCamera = true;
 			
 			 //Lives
-		         livesText = game.add.text(1000,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
+		         livesText = game.add.text(100,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
 			 livesText.fixedToCamera = true;
 			
 			//Bonus
-			bonusText = game.add.text(1200, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
+			bonusText = game.add.text(120, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 
 		}
@@ -173,8 +173,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
-						stateText.visible = true;
+						//endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
+						//stateText.visible = true;
 						//game.restart(); //restart game
 						//game.state.restart();
 						game.paused = true;
