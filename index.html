@@ -173,20 +173,18 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						game.paused = true;
-						music.stop(); //stop music
-						//endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
-						//stateText.visible = true;
-						game.restart(); //restart game
+						endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
+						stateText.visible = true;
+						//game.restart(); //restart game
 						//game.state.restart();
+						game.paused = true;
 					}
 					else
 					{
-					 	player.body.enable = false;
-						player.x=16;
+						player.invincible= false ;
+						player.body.enable = true;
+						player.x = 16;
 						player.y = game.world.height - 48;
-					        explosion.get.reset(player.body.x, player.body.y);
-						//player.resetPosition(player.body.x, player.body.y);
 						
 					}
 					
