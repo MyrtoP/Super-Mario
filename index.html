@@ -52,7 +52,7 @@ body {
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 			
 			game.stage.backgroundColor = '#5c94fc';
-			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
+			background = game.add.tileSprite(0, 0, 300, 300, "background");
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -175,8 +175,6 @@ body {
 					{
 						//endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
 						//stateText.visible = true;
-						//game.restart(); //restart game
-						//game.state.restart();
 						game.paused = true;
 					}
 					else
