@@ -27,7 +27,7 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-		  var endText;
+		 // var endText;
 		
 		function preload() {
 
@@ -175,9 +175,10 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
+						 var endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '12px', fill:'#088A85', align: 'center'});
 						endText.visible = true;
 						game.paused = true;
+						music.stop();
 					}
 					else
 					{
