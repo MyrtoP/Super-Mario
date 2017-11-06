@@ -182,8 +182,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						var endText = game.add.text(game.world.centerX, game.world.centerY, 'GAME OVER!', {fontSize: '20px', fill:'#FBEFEF', align: 'center'});
-						endText.visible = true;
+						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
 					}
