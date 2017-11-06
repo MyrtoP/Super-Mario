@@ -165,6 +165,11 @@ body {
 					//increment bonus
 					bonus+=1;
 					bonusText.text = "Bonus: " + bonus;
+					if(bonus == 10)
+					{
+						lives++;
+						livesText.text = "Lives:" + lives;
+					}
 				});
 			} else {
 				lives --;
@@ -175,7 +180,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						 var endText = game.add.text(10, 10, 'GAME OVER!', {fontSize: '20px', fill:'#FBEFEF', align: 'center'});
+						var endText = game.add.text(game.world.centerX, game.world.centerY, 'GAME OVER!', {fontSize: '20px', fill:'#FBEFEF', align: 'center'});
 						endText.visible = true;
 						game.paused = true;
 						music.stop();
