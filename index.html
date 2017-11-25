@@ -143,6 +143,24 @@ body {
 						player.frame = 12;
 				}
 			}
+			if(player.body.onFloor() && cursors.down.isDown)
+			{
+        			if(player.x < 224 && player.x > 192)
+				{
+    					player.x = 949;
+    					player.y = 160;
+				}
+			}
+			if(player.body.onFloor() && cursors.down.isDown) {
+				if (player.x < 2032 && player.x > 2016){
+					emitter.start(false, 5000, 20);
+					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					emitter.destroy();
+					});
+					backgroundAudio.stop();	
+  					player.body.enable = false;
+				}
+        		}
 		}
 
 		function coinOverlap(player, coin) {
