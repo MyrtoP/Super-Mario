@@ -53,15 +53,13 @@ body {
 			
 		}
 		function create() {
-			
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
-			
 			game.scale.pageAlignHorizontally = true;
 			game.scale.pageAlignVertically = true
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 			
+			//add background picture
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
@@ -73,8 +71,8 @@ body {
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
+			
 			map.createLayer('background');
-
 			layer = map.createLayer('solid');
 			layer.resizeWorld();
 
@@ -86,7 +84,6 @@ body {
 					[ 0, 0, 1, 2 ], 3, true); 
 			coins.callAll('animations.play', 'animations', 'spin');
 
-			
 			//goombas
 			goombas = game.add.group();
 			goombas.enableBody = true;
@@ -102,11 +99,10 @@ body {
 			boogie = game.add.group();
 			boogie.enableBody = true;
 			map.createFromTiles(1, null, 'boogie', 'stuff',boogie);
-			boogie.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
-					2, true);
-			boogie.callAll('animations.play', 'animations', 'walk');
+			boogie.callAll('animations.add', 'animations', 'walkt', [ 1, 0 ],2, true);
+			boogie.callAll('animations.play', 'animations', 'walkt');
 			boogie.setAll('body.bounce.x', 1);
-			boogie.setAll('body.velocity.x', -20);
+			boogie.setAll('body.velocity.x', 20);
 			boogie.setAll('body.gravity.y', 500);
 
 			
@@ -119,7 +115,6 @@ body {
 			player.animations.add('walkLeft', [ 8, 9, 10 ], 10, true);
 			player.goesRight = true;
 			game.camera.follow(player);
-
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			//score text
@@ -139,9 +134,11 @@ body {
 			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
+			game.physics.arcade.collide(boogie, layer);
 						
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
+			game.physics.arcade.overlap(player, boogie, boogieOverlap);
 
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -252,28 +249,6 @@ body {
 					
 				});
 			}
-			function EndGame(){
-        		if(player.body.onFloor() && cursors.down.isDown) {
-				if (player.x < 2032 && player.x > 2016){
-					emitter.start(false, 5000, 20);
-					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					emitter.destroy();
-					});
-					backgroundAudio.stop();	
-  					player.body.enable = false;
-				}
-        		}
-        	}
-        
-        	function Teleport(){
-        		if(player.body.onFloor() && cursors.down.isDown) {
-        			if(player.x < 224 && player.x > 192){
-    					player.x = 949;
-    					player.y = 160;
-				}
-        		}
-        	}
-        
 		}
 	</script>
 </body>
