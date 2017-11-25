@@ -48,7 +48,7 @@ body {
 			
 			//load music
 			//this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
-			this.load.audio('sfx', [ 'Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
+			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
@@ -72,7 +72,7 @@ body {
 			//map
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
-			map.setCollisionBetween(3, 12, true, 'solid');
+			map.setCollisionBetween(4, 16, true, 'solid');
 
 			map.createLayer('background');
 			
