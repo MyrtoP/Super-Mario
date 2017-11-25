@@ -62,6 +62,9 @@ body {
 			//add background picture
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
+			map.createLayer('background');
+			layer = map.createLayer('solid');
+			layer.resizeWorld();
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -71,17 +74,12 @@ body {
 			map = game.add.tilemap('level 1');
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(4, 16, true, 'solid');
-			
-			map.createLayer('background');
-			layer = map.createLayer('solid');
-			layer.resizeWorld();
 
 			//coins
 			coins = game.add.group();
 			coins.enableBody = true;
 			map.createFromTiles(2, null, 'coin', 'stuff', coins);
-			coins.callAll('animations.add', 'animations', 'spin',
-					[ 0, 0, 1, 2 ], 3, true); 
+			coins.callAll('animations.add', 'animations', 'spin',[ 0, 0, 1, 2 ], 3, true); 
 			coins.callAll('animations.play', 'animations', 'spin');
 
 			//goombas
@@ -103,7 +101,6 @@ body {
 			boogie.setAll('body.bounce.x', 1);
 			boogie.setAll('body.velocity.x', -20);
 			boogie.setAll('body.gravity.y', 500);
-
 			
 			//player
 			player = game.add.sprite(16, game.world.height - 48, 'mario');
@@ -139,6 +136,7 @@ body {
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			game.physics.arcade.overlap(player, boogie, boogieOverlap);
 
+			//player movement
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
