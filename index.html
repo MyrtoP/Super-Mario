@@ -68,9 +68,9 @@ body {
 			music.play();
 			
 			//map
-			map = game.add.tilemap('level');
+			map = game.add.tilemap('level 1');
 			map.addTilesetImage('tiles', 'tiles');
-			map.setCollisionBetween(3, 12, true, 'solid');
+			map.setCollisionBetween(4, 16, true, 'solid');
 			
 			map.createLayer('background');
 			layer = map.createLayer('solid');
