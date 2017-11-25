@@ -98,7 +98,7 @@ body {
 			//boogie
 			boogie = game.add.group();
 			boogie.enableBody = true;
-			map.createFromTiles(1, null, 'boogie', 'stuff',boogie);
+			map.createFromTiles(3, null, 'boogie', 'stuff',boogie);
 			boogie.callAll('animations.add', 'animations', 'walkt', [ 1, 0 ],2, true);
 			boogie.callAll('animations.play', 'animations', 'walkt');
 			boogie.setAll('body.bounce.x', 1);
