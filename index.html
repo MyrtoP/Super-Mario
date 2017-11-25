@@ -62,9 +62,6 @@ body {
 			//add background picture
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
-			map.createLayer('background');
-			layer = map.createLayer('solid');
-			layer.resizeWorld();
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -75,6 +72,10 @@ body {
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(4, 16, true, 'solid');
 
+			map.createLayer('background');
+			layer = map.createLayer('solid');
+			layer.resizeWorld();
+			
 			//coins
 			coins = game.add.group();
 			coins.enableBody = true;
