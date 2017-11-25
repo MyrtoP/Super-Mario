@@ -39,6 +39,7 @@ body {
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
+			this.load.spritesheet('boogie','assets/oie_transparent (1).png',16,16);
 			
 			//load map
 			this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,
@@ -90,12 +91,23 @@ body {
 			goombas = game.add.group();
 			goombas.enableBody = true;
 			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
-			goombas.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
+			boogie.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
 					2, true);
 			goombas.callAll('animations.play', 'animations', 'walk');
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
+
+			//boogie
+			boogie = game.add.group();
+			boogie.enableBody = true;
+			map.createFromTiles(1, null, 'boogie', 'stuff',boogie);
+			boogie.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
+					2, true);
+			boogie.callAll('animations.play', 'animations', 'walk');
+			boogie.setAll('body.bounce.x', 1);
+			boogie.setAll('body.velocity.x', -20);
+			boogie.setAll('body.gravity.y', 500);
 
 			
 			//player
@@ -161,8 +173,8 @@ body {
 						player.frame = 12;
 				}
 			}
-			Teleport();
-			EndGame();
+			//Teleport();
+			//EndGame();
 		}
 
 		function coinOverlap(player, coin) {
@@ -174,6 +186,29 @@ body {
 			scoreDisplay.text = "Score: " + score; 
 		}
 
+        	function boogieOverlap(player, boogie) {
+				lives --;
+				livesText.text = "Lives:" + lives;
+				player.frame = 6;
+				player.body.enable = false;
+				player.animations.stop();
+				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					if(lives <= 0)
+					{
+						alert('GAME OVER!\n Press F5 to reload');
+						game.paused = true;
+						music.stop();
+					}
+					else
+					{
+						player.invincible= false ;
+						player.body.enable = true;
+						player.x = 16;
+						player.y = game.world.height - 48;
+						
+					}
+		}
+		
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
 				goomba.animations.stop();
