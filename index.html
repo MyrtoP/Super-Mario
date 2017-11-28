@@ -170,12 +170,12 @@ body {
 					else
 						player.frame = 12;
 				}
-			}
-			function Teleport(){
-        			if(player.body.onFloor() && cursors.down.isDown) {
-        				if(player.x < 224 && player.x > 192){
-        				player.reset(949,160);
-        			}
+			  }
+			   function Teleport(){
+					if(player.body.onFloor() && cursors.down.isDown) {
+						if(player.x < 224 && player.x > 192){
+						player.reset(949,160);
+			     }
         		}
 			function EndGame(){
         			if(player.body.onFloor() && cursors.down.isDown) {
@@ -186,10 +186,10 @@ body {
 				});
 				backgroundAudio.stop();	
   				player.body.enable = false;
-				}
-        		}
+			 }
+        		//}
         	}
-		}
+		//}
 
 		function coinOverlap(player, coin) {
 			coin.kill();
