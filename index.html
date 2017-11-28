@@ -183,6 +183,16 @@ body {
 		}
 
         	function boogieOverlap(player, boogie) {
+				if (player.body.touching.down) {
+				boogie.animations.stop();
+				boogie.frame = 2;
+				boogie.body.enable = false;
+				player.body.velocity.y = -80;
+				game.time.events.add(Phaser.Timer.SECOND, function() {
+					boogie.kill();
+					//increment bonus
+				});
+			} else {
 				lives --;
 				livesText.text = "Lives:" + lives;
 				player.frame = 6;
@@ -194,14 +204,18 @@ body {
 						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
-					}else{
+					}
+					else
+					{
 						player.invincible= false ;
 						player.body.enable = true;
 						player.x = 16;
 						player.y = game.world.height - 48;
 						
 					}
+					
 				});
+			}
 		}
 		
 		function goombaOverlap(player, goomba) {
