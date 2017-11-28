@@ -261,23 +261,22 @@ body {
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0)
 					{
 						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
 					}
-					else
-					{
+					else{
 						player.invincible= false ;
 						player.body.enable = true;
 						player.x = 16;
 						player.y = game.world.height - 48;
 					}	
 				});
-			//}
-		//}	
-	</script>
+			 }
+           }	
+   </script>
 </body>
 </html>
