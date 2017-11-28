@@ -71,7 +71,7 @@ body {
 			
 			//map
 			map = game.add.tilemap('level');
-			map.addTilesetImage('tiles', 'tiles');
+			map.addTilesetImage('tiles', 'tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
