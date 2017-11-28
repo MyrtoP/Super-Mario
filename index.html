@@ -72,7 +72,7 @@ body {
 			//map
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
-			map.setCollisionBetween(4, 16, true, 'solid');
+			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
 			
@@ -95,9 +95,9 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
-/*
+
 			//boogie
-			boogie = game.add.group();
+			/*boogie = game.add.group();
 			boogie.enableBody = true;
 			map.createFromTiles(3, null, 'boogie', 'stuff',boogie);
 			boogie.callAll('animations.add', 'animations', 'walkt', [ 1, 0 ],2, true);
