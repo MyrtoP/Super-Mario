@@ -35,8 +35,8 @@ body {
 			this.load.crossOrigin = 'anonymous';
 			
 			//load spritesheets
-			//this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
-			this.load.spritesheet('tiles', 'assets/super_mario_tiles33.png', 16, 16);
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
+			//this.load.spritesheet('tiles', 'assets/super_mario_tiles33.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			//this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
@@ -44,8 +44,8 @@ body {
 			this.load.spritesheet('boogie','assets/oie_transparent.png',16,16);
 			
 			//load map   
-			//this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,Phaser.Tilemap.TILED_JSON);
-			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
+			this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,Phaser.Tilemap.TILED_JSON);
+			//this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
 			//load music
 			//this.load.audio('sfx', [ 'audio/Europe - The Final Countdown (Official Video).mp3','audio/Europe - The Final Countdown (Official Video).ogg' ]);
 			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
@@ -71,8 +71,8 @@ body {
 			
 			//map
 			map = game.add.tilemap('level');
-			map.addTilesetImage('tiles', 'tiles', 'tiles');
-			map.setCollisionBetween(3, 12, true, 'solid');
+			map.addTilesetImage('tiles', 'tiles');
+			map.setCollisionBetween(4, 16, true, 'solid');
 
 			map.createLayer('background');
 			
@@ -95,7 +95,7 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
-
+/*
 			//boogie
 			boogie = game.add.group();
 			boogie.enableBody = true;
@@ -104,7 +104,7 @@ body {
 			boogie.callAll('animations.play', 'animations', 'walkt');
 			boogie.setAll('body.bounce.x', 1);
 			boogie.setAll('body.velocity.x', -20);
-			boogie.setAll('body.gravity.y', 500);
+			boogie.setAll('body.gravity.y', 500);*/
 			
 			//player
 			player = game.add.sprite(16, game.world.height - 48, 'mario');
@@ -134,11 +134,11 @@ body {
 			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
-			game.physics.arcade.collide(boogie, layer);
+			//game.physics.arcade.collide(boogie, layer);
 						
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.overlap(player, boogie, boogieOverlap);
+			//game.physics.arcade.overlap(player, boogie, boogieOverlap);
 
 			//player movement
 			if (player.body.enable) {
@@ -171,6 +171,24 @@ body {
 						player.frame = 12;
 				}
 			}
+			function Teleport(){
+        			if(player.body.onFloor() && cursors.down.isDown) {
+        				if(player.x < 224 && player.x > 192){
+        				player.reset(949,160);
+        			}
+        		}
+			function EndGame(){
+        			if(player.body.onFloor() && cursors.down.isDown) {
+					if (player.x < 2032 && player.x > 2016){
+					emitter.start(false, 5000, 20);
+					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					emitter.destroy();
+				});
+				backgroundAudio.stop();	
+  				player.body.enable = false;
+				}
+        		}
+        	}
 		}
 
 		function coinOverlap(player, coin) {
@@ -182,7 +200,7 @@ body {
 			scoreDisplay.text = "Score: " + score; 
 		}
 
-        	function boogieOverlap(player, boogie) {
+        	/*function boogieOverlap(player, boogie) {
 				if (player.body.touching.down) {
 				boogie.animations.stop();
 				boogie.frame = 2;
@@ -216,7 +234,7 @@ body {
 					
 				});
 			}
-		}
+		}*/
 		
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
