@@ -134,6 +134,7 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			//game.physics.arcade.overlap(player, boogie, boogieOverlap);
+			
 			//player movement
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -163,11 +164,11 @@ body {
 						player.frame = 12;
 				}
 			}
-		    function Teleport(){
-				if(player.body.onFloor() && cursors.down.isDown) {
+		        function Teleport(){
+				if(player.body.onFloor() && cursors.down.isDown){
 					if(player.x < 224 && player.x > 192)
 				     	player.reset(949,160);
-		        }
+		        	}
 			}    
 			function EndGame(){
         			if(player.body.onFloor() && cursors.down.isDown){
@@ -180,6 +181,7 @@ body {
   				player.body.enable = false;
 			 }
 		}
+				
 		function coinOverlap(player, coin) {
 			coin.kill();
 			var coinSound = new Audio('audio/coin.wav');
@@ -188,6 +190,7 @@ body {
 			score+=1;
 			scoreDisplay.text = "Score: " + score; 
 		}
+				
         	function boogieOverlap(player, boogie) {
 				if (player.body.touching.down) {
 				boogie.animations.stop();
@@ -196,7 +199,6 @@ body {
 				player.body.velocity.y = -80;
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					boogie.kill();
-					//increment bonus
 				});
 			} else {
 				lives --;
