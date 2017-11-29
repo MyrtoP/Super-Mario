@@ -30,7 +30,6 @@ body {
 		 // var endText;
 		
 		function preload() {
-
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 			
@@ -73,7 +72,6 @@ body {
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
-
 			map.createLayer('background');
 			
 			layer = map.createLayer('solid');
@@ -85,7 +83,6 @@ body {
 			map.createFromTiles(2, null, 'coin', 'stuff', coins);
 			coins.callAll('animations.add', 'animations', 'spin',[ 0, 0, 1, 2 ], 3, true); 
 			coins.callAll('animations.play', 'animations', 'spin');
-
 			//goombas
 			goombas = game.add.group();
 			goombas.enableBody = true;
@@ -95,7 +92,6 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
-
 			//boogie
 			/*boogie = game.add.group();
 			boogie.enableBody = true;
@@ -128,9 +124,8 @@ body {
 			//Bonus text
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
-
 		}
-		function update() {
+		function update(){
 			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
@@ -139,7 +134,6 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			//game.physics.arcade.overlap(player, boogie, boogieOverlap);
-
 			//player movement
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -158,39 +152,34 @@ body {
 					else
 						player.frame = 7;
 				}
-
 				if (cursors.up.isDown && player.body.onFloor()) {
 					player.body.velocity.y = -190;
 					player.animations.stop();
 				}
-
 				if (player.body.velocity.y != 0) {
 					if (player.goesRight)
 						player.frame = 5;
 					else
 						player.frame = 12;
 				}
-			  }
-			   function Teleport(){
-					if(player.body.onFloor() && cursors.down.isDown) {
-						if(player.x < 224 && player.x > 192){
-						player.reset(949,160);
-			     }
-        		}
+			}
+		    function Teleport(){
+				if(player.body.onFloor() && cursors.down.isDown) {
+					if(player.x < 224 && player.x > 192)
+				     	player.reset(949,160);
+		        }
+			}    
 			function EndGame(){
-        			if(player.body.onFloor() && cursors.down.isDown) {
-					if (player.x < 2032 && player.x > 2016){
-					emitter.start(false, 5000, 20);
-					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					emitter.destroy();
-				});
+        			if(player.body.onFloor() && cursors.down.isDown){
+						if (player.x < 2032 && player.x > 2016){
+						emitter.start(false, 5000, 20);
+						game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+						emitter.destroy();
+			    	});
 				backgroundAudio.stop();	
   				player.body.enable = false;
 			 }
-        		//}
-        	}
-		//}
-
+		}
 		function coinOverlap(player, coin) {
 			coin.kill();
 			var coinSound = new Audio('audio/coin.wav');
@@ -199,7 +188,6 @@ body {
 			score+=1;
 			scoreDisplay.text = "Score: " + score; 
 		}
-
         	/*function boogieOverlap(player, boogie) {
 				if (player.body.touching.down) {
 				boogie.animations.stop();
@@ -261,22 +249,24 @@ body {
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
+				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
 						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
 					}
-					else{
+					else
+					{
 						player.invincible= false ;
 						player.body.enable = true;
 						player.x = 16;
 						player.y = game.world.height - 48;
-					}	
-				});
-			 }
-         //}	
-   </script>
+						
+					}
+      			     });
+		       }	
+		}
+     </script>
 </body>
 </html>
