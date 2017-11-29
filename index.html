@@ -188,7 +188,7 @@ body {
 						if (player.x < 2032 && player.x > 2016){
 						game.physics.arcade.collide(emitter);
 						game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-						//emitter.destroy();
+						emitter.destroy();
 			    		   });
 					   backgroundAudio.stop();	
 					   player.body.enable = false;
@@ -225,7 +225,7 @@ body {
 					if(lives <= 0)
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
-						//game.paused = true;
+						game.paused = true;
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
 						music.stop();
@@ -270,9 +270,9 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						//alert('GAME OVER!\n Press F5 to reload');
+						game.paused = true;
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
-						game.paused = true;
 						music.stop();
 					}else{
 					 	player.invincible= false ;
