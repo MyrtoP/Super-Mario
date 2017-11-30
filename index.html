@@ -27,6 +27,7 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
+		  var endText;
 		  var emitter;
 		  var restartButton 
 		
@@ -126,6 +127,9 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
+			// Game over text
+			endText = game.add.text(170, 10, '', {fontSize: '12px', fill:'#0B2F3A'});
+			endText.fixedToCamera = true;
 			//emitter
 			/*emitter = game.add.emitter(game.world.centerX, game.world.centerY, 250);
  			emitter.makeParticles('veggies', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 200, true, true);
@@ -136,7 +140,7 @@ body {
 		        emitter.angularDrag = 30;
 			emitter.start(false, 8000, 400); */
 			emitter = game.add.emitter(1936, 16,200); 
-			mitter.makeParticles('veggies');
+			emitter.makeParticles('veggies');
 
 		}
 		function update(){
@@ -227,6 +231,7 @@ body {
 					if(lives <= 0)
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
+						endText.text = "GAME OVER!"
 						game.paused = true;
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
