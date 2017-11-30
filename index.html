@@ -35,8 +35,8 @@ body {
 			this.load.crossOrigin = 'anonymous';
 			
 			//load spritesheets
-			//this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
-			this.load.spritesheet('tiles', 'assets/super_mario_tiles33.png', 16, 16);
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
+			//this.load.spritesheet('tiles', 'assets/super_mario_tiles33.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			//this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
@@ -127,8 +127,9 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			// Game over text
-			endText = game.add.text(170, 10, '', {fontSize: '12px', fill:'#0B2F3A'});
+			endText = game.add.text(170, 10,' ', {fontSize: '12px', fill:'#0B2F3A'});
 			endText.fixedToCamera = true;
+			
 			//emitter
 			emitter = game.add.emitter(game.world.centerX, game.world.centerY, 250);
  			emitter.makeParticles('veggies', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 200, true, true);
@@ -139,7 +140,7 @@ body {
 		        emitter.angularDrag = 30;
 			emitter.start(false, 8000, 400); 
 			//emitter = game.add.emitter(1936, 16,200); 
-			//emitter.makeParticles('veggies');
+			emitter.makeParticles('veggies');
 
 		}
 		function update(){
@@ -276,11 +277,11 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						//alert('GAME OVER!\n Press F5 to reload');
-						endText.text = "GAME OVER!"
 						game.paused = true;
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
 						music.stop();
+						endText.text = "GAME OVER!"
 					}else{
 					 	player.invincible= false ;
 						player.body.enable = true;
