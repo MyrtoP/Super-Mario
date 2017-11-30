@@ -31,20 +31,18 @@ body {
 		  var emitter;
 		
 		function preload() {
-			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
-			this.load.crossOrigin = 'anonymous';
+			//this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
+			//this.load.crossOrigin = 'anonymous';
 			
 			//load spritesheets
-			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
-			//this.load.spritesheet('tiles', 'assets/super_mario_tiles33.png', 16, 16);
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles33.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
-			//this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
-			this.load.spritesheet('boogie','assets/oie_transparent.png',16,16);
+			this.load.spritesheet('boogie','assets/bg.png',16,16);
 			
 			//load map   
-			this.load.tilemap('level', 'assets/super_mario_mapfinallll.json', null,Phaser.Tilemap.TILED_JSON);
+			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
 			//load music
 			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
@@ -52,7 +50,7 @@ body {
 			game.load.image("background", "assets/picture.png");
 			
 			//load emiter spritesheet
-    			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
+    		game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
 			
 		}
 		function create() {
@@ -97,7 +95,7 @@ body {
 			boogie = game.add.group();
 			boogie.enableBody = true;
 			map.createFromTiles(3, null, 'boogie', 'stuff',boogie);
-			boogie.callAll('animations.add', 'animations', 'walkt', [ 1, 0 ],2, true);
+			boogie.callAll('animations.add', 'animations', 'walkt', [ 0, 1 ],6, true);
 			boogie.callAll('animations.play', 'animations', 'walkt');
 			boogie.setAll('body.bounce.x', 1);
 			boogie.setAll('body.velocity.x', -20);
@@ -131,16 +129,18 @@ body {
 			endText.fixedToCamera = true;
 			
 			//emitter
-			/*emitter = game.add.emitter(game.world.centerX, game.world.centerY, 250);
+			emitter = game.add.emitter(125*16, 16, 250);
  			emitter.makeParticles('veggies', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 200, true, true);
 		        emitter.minParticleSpeed.setTo(-200, -300);
 		        emitter.maxParticleSpeed.setTo(200, -400);
 		        emitter.gravity = 150;
 		        emitter.bounce.setTo(0.5, 0.5);
 		        emitter.angularDrag = 30;
-			emitter.start(false, 8000, 400); */
-			emitter = game.add.emitter(game.world.centerX, 200, 200);
-			emitter.makeParticles('veggies');
+		//	emitter.start(false, 8000, 400); 
+			
+			//emitter = game.add.emitter(16,16, 200);
+			//emitter.makeParticles('veggies');
+			
 		}
 		
 		function update(){
@@ -182,26 +182,25 @@ body {
 						player.frame = 12;
 				}
 			}
-		        function Teleport(){
+		       //teleport
 				if(player.body.onFloor() && cursors.down.isDown){
-					if(player.x < 224 && player.x > 192)
-				     	player.reset(949,160);
+					if(player.x > 27*16  && player.x< 28*16)
+				     	player.reset(76*16,6*16);
 		        	}
-			 }    
-			 /*function EndGame(){
+			     //end level and emitter
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
-						//game.physics.arcade.collide(emitter);
-						emitter.start(false, 5000, 20);
-						game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+							 game.physics.arcade.collide(emitter);
+					//	emitter.start(false, 8000, 400);
+						/*game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 						emitter.destroy();
-			    		   });
+			    		   }); */
 					   backgroundAudio.stop();	
 					   player.body.enable = false;
 			            }
 			   }
-                     }*/
-                } 
+                
+        } 
 				
 		function coinOverlap(player, coin) {
 			coin.kill();
@@ -236,16 +235,14 @@ body {
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
 						music.stop();
+						
 					}
 					else
 					{
 						player.invincible= false ;
 						player.body.enable = true;
-						player.x = 16;
-						player.y = game.world.height - 48;
-						
+						player.reset(16,game.world.height - 48);
 					}
-					
 				});
 			}
 		}
@@ -282,10 +279,6 @@ body {
             					restartButton.onDown.addOnce(restartGame);
 						music.stop();
 						endText.text = "GAME OVER!";
-						//game.physics.arcade.collide(emitter);
-						emitter.start(false, 5000, 20);
-						game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-						//emitter.destroy();
 					}else{
 					 	player.invincible= false ;
 						player.body.enable = true;
