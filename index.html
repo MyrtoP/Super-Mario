@@ -273,7 +273,7 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						//alert('GAME OVER!\n Press F5 to reload');
+						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
