@@ -178,13 +178,13 @@ body {
 			     //end level and emitter
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
-							 game.physics.arcade.collide(emitter);
+							// game.physics.arcade.collide(emitter);
+							 backgroundAudio.stop();	
 					//	emitter.start(false, 8000, 400);
 						/*game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 						emitter.destroy();
 			    		   }); */
 					   game.physics.enable(gameover, Phaser.Physics.ARCADE);
-					   backgroundAudio.stop();	
 					   player.body.enable = false;
 			            }
 			   }
