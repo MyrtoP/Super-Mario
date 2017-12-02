@@ -232,12 +232,7 @@ body {
 					{
 						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
-						var button = game.add.button(490 , 320, "pause", function(){
-							button.onDown.addOnce(pauseGame);
-						});
-						button.anchor.set(0.5, 0.5);
 						music.stop();
-						
 					}
 					else
 					{
@@ -277,8 +272,6 @@ body {
 					if(lives <= 0){
 						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
-						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-            					restartButton.onDown.addOnce(restartGame);
 						music.stop();
 					}else{
 					 	player.invincible= false ;
