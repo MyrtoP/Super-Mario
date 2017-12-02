@@ -49,6 +49,7 @@ body {
 			//load background image
 			game.load.image("background", "assets/picture.png");
 			game.load.image("pause","assets/pause.png");
+			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
     		game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -182,7 +183,6 @@ body {
 			    		   }); */
 					   backgroundAudio.stop();	
 					   player.body.enable = false;
-					   game.state.start('menu');
 			            }
 			   }
                 
@@ -215,7 +215,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 						game.paused = true;
 						music.stop();
 					}
@@ -255,7 +256,8 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 						game.paused = true;
 						music.stop();
 					}else{
