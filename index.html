@@ -48,11 +48,11 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			game.load.image("pause","assets/pause.png");
+			//game.load.image("pause","assets/pause.png");
 			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
-    		game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
+    			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
 			
 		}
 		function create() {
@@ -65,6 +65,8 @@ body {
 			//add background picture
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
+			
+			gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -181,6 +183,7 @@ body {
 						/*game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 						emitter.destroy();
 			    		   }); */
+					   game.physics.enable(gameover, Phaser.Physics.ARCADE);
 					   backgroundAudio.stop();	
 					   player.body.enable = false;
 			            }
@@ -216,7 +219,7 @@ body {
 					if(lives <= 0)
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
-						gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
+						game.physics.enable(gameover, Phaser.Physics.ARCADE);
 						game.paused = true;
 						music.stop();
 					}
@@ -257,7 +260,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						//alert('GAME OVER!\n Press F5 to reload');
-						gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
+						game.physics.enable(gameover, Phaser.Physics.ARCADE);
 						game.paused = true;
 						music.stop();
 					}else{
