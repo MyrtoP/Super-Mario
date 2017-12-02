@@ -125,23 +125,7 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			// Game over text
-			endText = game.add.text(170, 10,' ', {fontSize: '12px', fill:'#0B2F3A'});
-			endText.fixedToCamera = true;
-			
 			//emitter
-			emitter = game.add.emitter(125*16, 16, 250);
- 			emitter.makeParticles('veggies', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 200, true, true);
-		        emitter.minParticleSpeed.setTo(-200, -300);
-		        emitter.maxParticleSpeed.setTo(200, -400);
-		        emitter.gravity = 150;
-		        emitter.bounce.setTo(0.5, 0.5);
-		        emitter.angularDrag = 30;
-		//	emitter.start(false, 8000, 400); 
-			
-			//emitter = game.add.emitter(16,16, 200);
-			//emitter.makeParticles('veggies');
-			
 		}
 		
 		function update(){
@@ -198,6 +182,7 @@ body {
 			    		   }); */
 					   backgroundAudio.stop();	
 					   player.body.enable = false;
+					   game.state.start('menu');
 			            }
 			   }
                 
