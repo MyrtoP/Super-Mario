@@ -48,6 +48,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
+			game.load.image("pause","assets/pause.png");
 			
 			//load emiter spritesheet
     		game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -229,11 +230,12 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						//alert('GAME OVER!\n Press F5 to reload');
-						endText.text = "GAME OVER!"
+						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
-						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-            					restartButton.onDown.addOnce(restartGame);
+						var button = game.add.button(490 , 320, "pause", function(){
+							button.onDown.addOnce(pauseGame);
+						});
+						button.anchor.set(0.5, 0.5);
 						music.stop();
 						
 					}
@@ -278,7 +280,6 @@ body {
 						var restartButton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
             					restartButton.onDown.addOnce(restartGame);
 						music.stop();
-						endText.text = "GAME OVER!";
 					}else{
 					 	player.invincible= false ;
 						player.body.enable = true;
