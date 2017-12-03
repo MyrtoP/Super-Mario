@@ -27,7 +27,8 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-
+		  var sprite;
+		  var text;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -47,7 +48,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			//game.load.image("gameover","assets/game-over.png");
+			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -67,7 +68,14 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
-			//gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
+			sprite = game.add.sprite(200, 200, 'gameover');
+			sprite.inputEnabled = true;
+		        sprite.input.enableDrag();
+			var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: sprite.width, align: "center", backgroundColor: "#ffff00" };
+
+			 text = game.add.text(0, 0, "- game over!", style);
+			 text.anchor.set(0.5);
+		 	//gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
@@ -187,8 +195,8 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 							 backgroundAudio.stop();
-							endtext.text = "CONGRATS!";
-							endtext.fixedToCamera = true;
+							text.x = Math.floor(sprite.x + sprite.width / 2);
+   						 text.y = Math.floor(sprite.y + sprite.height / 2);
 					     player.body.enable = false;
 					     player.reset();
 			            }
