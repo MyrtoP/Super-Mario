@@ -139,9 +139,8 @@ body {
 			Livespite=game.add.sprite(104,10,'heart');
 			Livespite.enableBody = true;
 			Livespite.fixedToCamera = true;
-			Livespite1=game.add.sprite(104,10,'heart');
-			Livespite1.enableBody = true;
-			Livespite1.fixedToCamera = true;
+			var tween = game.add.tween(Livespite).to( { alpha: 1 }, 2000, "Linear", true);
+			tween.repeat(10, 1000);
             		/*for (var i = 0; i < 3; i++) 
 		   	 {
 				//Livespite=game.add.sprite(80*i,10,'heart');
