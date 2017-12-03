@@ -27,7 +27,6 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-		  var help;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -137,7 +136,7 @@ body {
 			
 			
 			//emitter
-			    eemitter = game.add.emitter(game.world.centerX, 500, 200);
+			    emitter = game.add.emitter(game.world.centerX, 500, 200);
 
 			    emitter.makeParticles('veggies');
 
