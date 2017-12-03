@@ -69,16 +69,7 @@ body {
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
 		 	//help = game.add.tileSprite(0, 0, 3000, 3000, "gameover");
-			for (var i = 0; i < 8; i++)
-			{
-				var logo = game.add.sprite(game.world.randomX, -150 + game.world.randomY, 'gameover');
-				logo.anchor.set(0.5);
-				logo.scale.set(game.rnd.realInRange(0.2, 1));
-				game.add.tween(logo).to({ y: "+300" }, 1000 + game.rnd.between(1000,2000), "Bounce.easeOut", true, 0, -1, true);
-			 }
-               	         var gray = game.add.filter('Gray');
-		         game.world.filters = [gray];
-
+			
 			//audio sprite
 			var music = game.add.audio("sfx");
 			music.play();
@@ -147,10 +138,8 @@ body {
 			
 			
 			//emitter
-			emitter = game.add.emitter(game.world.centerX, 500, 200);
-
+			    emitter = game.add.emitter(game.world.centerX, 500, 200);
 			    emitter.makeParticles('veggies');
-
 			    emitter.setRotation(0, 0);
 			    emitter.setAlpha(0.3, 0.8);
 			    emitter.setScale(0.5, 1);
@@ -206,7 +195,7 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-						     //emitter.start(false, 5000, 100);
+						     emitter.start(false, 2032, 2016);
 						     player.body.enable = false;
 						     player.reset();
 			            }
