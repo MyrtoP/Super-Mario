@@ -27,8 +27,7 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-		  var sprite;
-		  var text;
+		  var gameover;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -51,7 +50,7 @@ body {
 			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
-    			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
+    			//game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
 			
 		}
 		function create() {
@@ -68,10 +67,10 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
-			
-			sprite = game.make.sprite(0, 0, 'gameover');
-    			text = game.add.renderTexture(game.width, game.height);
-   			 game.add.sprite(0, 0, text);
+			gameover = game.add.sprite(game.world.centerX, game.world.centerY, 'gameover');
+			gameover.anchor.set(0.5);
+
+    			game.time.events.loop(Phaser.Timer.SECOND * 2, changeTint, this);
 		 	//gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 			
 			//audio sprite
@@ -191,13 +190,10 @@ body {
 			     //end level and emitter
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
-							 backgroundAudio.stop();
-							if (!game.input.activePointer.position.isZero())
-							    {
-								text.renderXY(sprite, game.input.activePointer.x, game.input.activePointer.y, true);
-							    }
-					     player.body.enable = false;
-					     player.reset();
+						     backgroundAudio.stop();
+						     gameover.tint = Math.random() * 0xffffff;
+						     player.body.enable = false;
+						     player.reset();
 			            }
 			   }
                 
