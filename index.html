@@ -28,6 +28,7 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var emitter;
+		 var txtValue;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -121,6 +122,7 @@ body {
 			game.camera.follow(player);
 			cursors = game.input.keyboard.createCursorKeys();
 			
+			
 			//score text
 			scoreDisplay = game.add.text(10, 10, 'Score: 0', { fontSize: '12px', fill: '#FFFFFF'});
 			scoreDisplay.fixedToCamera = true;
@@ -133,17 +135,9 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			this.scoreText = this.add.text(
-				    this.world.centerX,
-				    this.world.height/5,
-				    "",
-				    {
-					size: "32px",
-					fill: "#FFF",
-					align: "center"
-				    }
-			);
-			this.scoreText.anchor.setTo(0.5, 0.5);
+			txtValue = game.add.text(170, 10, 'Game over!!', {fontSize: '12px', align: "center", fill:'#0B2F3A',});
+			game.txtValue.anchor.setTo(0.5,0.5);
+			txtValue.visible = false;
 			
 			//emitter
 			emitter = game.add.emitter(0, 0, 100);
@@ -199,10 +193,10 @@ body {
 			     //end level and emitter
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
-							// game.physics.arcade.collide(emitter);
 							 backgroundAudio.stop();
-						 emitter.start(true, 2000, null, 10);
+						 //emitter.start(true, 2000, null, 10);
 					     player.body.enable = false;
+					     player.reset();
 			            }
 			   }
                 
@@ -236,10 +230,10 @@ body {
 					if(lives <= 0)
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
-						//game.physics.enable(gameover, Phaser.Physics.ARCADE);
+						txtValue.text = "Game over! ";
+						txtValue.visible = true;
 						game.paused = true;
 						music.stop();
-						this.scoreText.setText("TOUCH TO\nSTART GAME");
 					}
 					else
 					{
@@ -278,10 +272,10 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						//alert('GAME OVER!\n Press F5 to reload');
-						//game.physics.enable(gameover, Phaser.Physics.ARCADE);
+						txtValue.text = "Game over! ";
+						txtValue.visible = true;
 						game.paused = true;
 						music.stop();
-						this.scoreText.setText("TOUCH TO\nSTART GAME");
 					}
 					else
 					{
