@@ -29,6 +29,7 @@ body {
 		  var bonusText;
 		  var emitter;
 		 var txtValue;
+		 var endtext;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -195,7 +196,7 @@ body {
 							var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
 							endtext = game.add.text(120, 150, "CONGRATULATIONS", style5);
 							endtext.fixedToCamera=true;
-						 //emitter.start(true, 2000, null, 10);
+						 emitter.start(true, 2000, null, 10);
 					     player.body.enable = false;
 					     player.reset();
 			            }
