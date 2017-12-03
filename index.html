@@ -133,17 +133,23 @@ body {
 			 livesText.fixedToCamera = true;
 			
 			//crete heart sprite
-			//Livespite=game.add.sprite(102,10,'heart');
-			//Livespite.enableBody = true;
-			//Livespite.fixedToCamera = true;
+			Livespite=game.add.sprite(102,10,'heart');
+			Livespite.enableBody = true;
+			Livespite.fixedToCamera = true;
 			
 			Livespite = game.add.group();
             		for (var i = 0; i < 3; i++) 
 		   	 {
-				Livespite=game.add.sprite(80*i,10,'heart');
-				Livespite.enableBody = true;
-				Livespite.fixedToCamera = true;
+				//Livespite=game.add.sprite(80*i,10,'heart');
+				//Livespite.enableBody = true;
+				//Livespite.fixedToCamera = true;
+				 var love = Livespite.create(game.world.width - 235 + (30 * i), 517, 'heart');
+				love.anchor.setTo(0.5, 0.5);
+				love.angle = 90;
+				love.alpha = 0.4;
+				 
 		   	 }  
+            
 			
 			//Bonus text
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
