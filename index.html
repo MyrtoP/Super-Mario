@@ -134,7 +134,7 @@ body {
 			
 			//create heart sprite
 			Livespite = game.add.group();
-			Livespite=game.add.sprite(120,10,'heart');
+			Livespite=game.add.sprite(118,10,'heart');
 			Livespite.enableBody = true;
 			Livespite.fixedToCamera = true;
 			
@@ -269,7 +269,7 @@ body {
 				});
 			} else {
 				lives --;
-				livesText.text = "Lives:      " + lives;
+				livesText.text = "Lives:     " + lives;
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
