@@ -28,6 +28,8 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var endtext;
+		  var game_overtext;
+		  var style;
 		  var emitter;
 		  
 		
@@ -62,7 +64,7 @@ body {
 			game.scale.pageAlignVertically = true
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
-			
+			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			//add background picture
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
@@ -185,9 +187,10 @@ body {
 						if (player.x < 2032 && player.x > 2016){
 							// game.physics.arcade.collide(emitter);
 							 backgroundAudio.stop();
-							 end.visible = false;
-						 emitter.start(true, 2000, null, 10);	
-					   player.body.enable = false;
+						 emitter.start(true, 2000, null, 10);
+						var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
+						endtext = game.add.text(120, 150, "CONGRATULATIONS", style);
+					     player.body.enable = false;
 			            }
 			   }
                 
@@ -222,11 +225,9 @@ body {
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
 						//game.physics.enable(gameover, Phaser.Physics.ARCADE);
-						//Game over text
-						var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
-						endtext = game.add.text(120, 150, "CONGRATULATIONS", style);
 						game.paused = true;
 						music.stop();
+						game_overtext = game.add.text(280, 150, "GAME OVER", style);
 					}
 					else
 					{
