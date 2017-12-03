@@ -27,6 +27,7 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
+		  var teleportxt;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -38,6 +39,7 @@ body {
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
 			this.load.spritesheet('boogie','assets/bg.png',16,16);
+			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
@@ -130,13 +132,22 @@ body {
 		         livesText = game.add.text(80,10, 'Lives: 3', { fontSize: '12px', fill: '#9C0913'});
 			 livesText.fixedToCamera = true;
 			
+			 //crete life sprite
+			Livespite=game.add.sprite(160,16,'heart');
+			Livespite.enableBody = true;
+			Livespite.fixedToCamera = true;
+			
 			//Bonus text
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
+			//create teleport text
+			teleportxt = game.add.text(180,112,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			//emitter
-
+			emitter = game.add.emitter(1936, 16,200);
+			emitter.makeParticles('veggies');
+			
 		}
 		
 		function update(){
@@ -183,12 +194,14 @@ body {
 					if(player.x > 27*16  && player.x< 28*16)
 				     	player.reset(76*16,6*16);
 		        	}
+			
 			     //end level and emitter
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-						     //emitter.start(true, 5000, 100);
+  						     emitter.start(false, 5000, 20);
 						     player.body.enable = false;
+						     emitter.destroy();
 			            }
 			   }
                 
@@ -221,9 +234,9 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
+						alert('GAME OVER!\n Press F5 to reload');
 					}
 					else
 					{
@@ -261,9 +274,9 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
+						alert('GAME OVER!\n Press F5 to reload');
 					}
 					else
 					{
