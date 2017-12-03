@@ -136,13 +136,6 @@ body {
 			
 			
 			//emitter
-			        emitter = this.game.add.emitter(pointer.x,pointer.y,200);
-				emitter.width = 10;
-				emitter.setXSpeed(-100,100);
-				emitter.setYSpeed(-100,100);
-				emitter.makeParticles('veggies');
-				emitter.gravity = 200;
-				emitter.start(false,3000,null,50);
 
 		}
 		
@@ -195,9 +188,7 @@ body {
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
 						     //emitter.start(true, 5000, 100);
-						     emitter.start(true,3000,null,50);
 						     player.body.enable = false;
-						     game.reset();
 			            }
 			   }
                 
