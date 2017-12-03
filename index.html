@@ -133,10 +133,14 @@ body {
 		         livesText = game.add.text(80,10, 'Lives: ', { fontSize: '12px', fill: '#9C0913'});
 			 livesText.fixedToCamera = true;
 			
-			 //crete life sprite
-			Livespite=game.add.sprite(100,10,'heart');
-			Livespite.enableBody = true;
-			Livespite.fixedToCamera = true; 
+			//crete heart sprite
+			for(var i = 0; i< 3; i++)
+			{
+				Livespite=game.add.sprite(95,10,'heart');
+				Livespite.enableBody = true;
+				Livespite.fixedToCamera = true;
+			}
+			 
 			/*lives = game.add.group();
                         //game.add.text(80,10, 'Lives : ', { fontSize: '5px Calibri', fill: 'red' });
             
