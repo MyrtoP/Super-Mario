@@ -58,9 +58,10 @@ body {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
 			game.scale.pageAlignVertically = true
+			game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
-			
+			 
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas);
 			
 			//add background picture
