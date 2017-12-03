@@ -133,12 +133,16 @@ body {
 			 livesText.fixedToCamera = true;
 			
 			//crete heart sprite
-			Livespite=game.add.sprite(102,10,'heart');
-			Livespite.enableBody = true;
-			Livespite.fixedToCamera = true;
+			
 			
 			Livespite = game.add.group();
-            		for (var i = 0; i < 3; i++) 
+			for (var i = 0; i < 3; i++)
+			{
+				Livespite=game.add.sprite(102*i,10,'heart');
+				Livespite.enableBody = true;
+				Livespite.fixedToCamera = true;
+			}
+            		/*for (var i = 0; i < 3; i++) 
 		   	 {
 				//Livespite=game.add.sprite(80*i,10,'heart');
 				//Livespite.enableBody = true;
@@ -148,7 +152,7 @@ body {
 				love.angle = 90;
 				love.alpha = 0.4;
 				 
-		   	 }  
+		   	 }  */
             
 			
 			//Bonus text
