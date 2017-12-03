@@ -47,7 +47,8 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			//game.load.spritesheet("gameover","assets/game-over.png");
+			game.load.spritesheet("gameover","assets/game-over.png");
+			game.load.script('gray', 'https://cdn.rawgit.com/photonstorm/phaser/master/v2/filters/Gray.js');
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -68,7 +69,16 @@ body {
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
 		 	//help = game.add.tileSprite(0, 0, 3000, 3000, "gameover");
-			
+			for (var i = 0; i < 8; i++)
+			{
+				var logo = game.add.sprite(game.world.randomX, -150 + game.world.randomY, 'gameover');
+				logo.anchor.set(0.5);
+				logo.scale.set(game.rnd.realInRange(0.2, 1));
+				game.add.tween(logo).to({ y: "+300" }, 1000 + game.rnd.between(1000,2000), "Bounce.easeOut", true, 0, -1, true);
+			 }
+               	         var gray = game.add.filter('Gray');
+		         game.world.filters = [gray];
+
 			//audio sprite
 			var music = game.add.audio("sfx");
 			music.play();
@@ -197,12 +207,6 @@ body {
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
 						     //emitter.start(false, 5000, 100);
-							var message = new Text(
-								  "Hello Pixi!",
-								  {fontFamily: "Arial", fontSize: 32, fill: "white"}
-								);
-								message.position.setTp(0.5, 0.5);
-								game.addtext(message);
 						     player.body.enable = false;
 						     player.reset();
 			            }
