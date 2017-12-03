@@ -67,10 +67,6 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
-			gameover = game.add.sprite(game.world.centerX, game.world.centerY, 'gameover');
-			gameover.anchor.set(0.5);
-
-    			game.time.events.loop(Phaser.Timer.SECOND * 2, changeTint, this);
 		 	//gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 			
 			//audio sprite
@@ -200,7 +196,6 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-						     gameover.tint = Math.random() * 0xffffff;
 						     emitter.start(false, 5000, 100);
 						     player.body.enable = false;
 						     player.reset();
