@@ -27,8 +27,9 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
+		  var endtext;
 		  var emitter;
-		   var end;
+		  
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -128,10 +129,6 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			//Game over text
-			end = game.add.text(game.world.centerX,game.world.centerY,'You win!',{fontSize: '30px', fill:'#FFFFFF'});
-			end.visible = false;
-			
 			//emitter
 			emitter = game.add.emitter(0, 0, 100);
 			emitter.makeParticles('veggies');
@@ -225,8 +222,9 @@ body {
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
 						//game.physics.enable(gameover, Phaser.Physics.ARCADE);
-						//this.GameOver = game.add.text(60, 200, "GAME OVER", { fontSize: "50px", fill: "#a00000"});
-						//this.game_state.groups.hud.add(go);
+						//Game over text
+						var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
+						endtext = game.add.text(120, 150, "CONGRATULATIONS", style);
 						game.paused = true;
 						music.stop();
 					}
@@ -270,6 +268,8 @@ body {
 						//game.physics.enable(gameover, Phaser.Physics.ARCADE);
 						game.paused = true;
 						music.stop();
+						var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
+						endtext = game.add.text(120, 150, "CONGRATULATIONS", style);
 					}
 					else
 					{
