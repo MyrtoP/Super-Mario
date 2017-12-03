@@ -28,7 +28,7 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var emitter;
-		   var go;
+		   var end;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -128,9 +128,8 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			go = this.game_state.game.add.text(this.game_state.game.world.width / 2, this.game_state.game.world.height * 0.4, "Game Over", this.text_style.game_over);
-    			go.anchor.setTo(0.5);
-    			this.game_state.groups.hud.add(go);
+			end = game.add.text(game.world.centerX,game.world.centerY,'You win!',{fontSize: '30px', fill:'#FFFFFF'});
+			end.visible = false;
 			//emitter
 		}
 		
@@ -182,12 +181,12 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 							// game.physics.arcade.collide(emitter);
-							 backgroundAudio.stop();	
-					//	emitter.start(false, 8000, 400);
-						/*game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-						emitter.destroy();
-			    		   }); */
-					   //game.physics.enable(gameover, Phaser.Physics.ARCADE);
+							 backgroundAudio.stop();
+							 end.visible = false;
+						//	emitter.start(false, 8000, 400);
+							/*game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+							emitter.destroy();
+						   }); */
 					   player.body.enable = false;
 			            }
 			   }
