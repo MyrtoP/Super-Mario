@@ -136,9 +136,6 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			txtValue = game.add.text(170, 10, 'Game over!!', {fontSize: '12px', align: "center", fill:'#0B2F3A',});
-			game.txtValue.anchor.setTo(0.5,0.5);
-			txtValue.visible = false;
 			
 			//emitter
 			emitter = game.add.emitter(0, 0, 100);
@@ -234,7 +231,11 @@ body {
 					if(lives <= 0)
 					{
 						//alert('GAME OVER!\n Press F5 to reload');
-						txtValue.text = "Game over! ";
+						var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
+						txtValue = game.add.text(280, 150, "GAME OVER", style5);
+						txtValue.visible = true;
+						txtValue.fixedToCamera=true; 
+						//txtValue.text = "Game over! ";
 						//txtValue.visible;
 						game.paused = true;
 						music.stop();
