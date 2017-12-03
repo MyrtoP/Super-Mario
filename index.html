@@ -27,7 +27,7 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-		  var gameover;
+		  var help;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -47,7 +47,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			game.load.image("gameover","assets/game-over.png");
+			game.load.spritesheet("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -67,7 +67,7 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
-		 	//gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
+		 	help = game.add.tileSprite(0, 0, 3000, 3000, "gameover");
 			
 			//audio sprite
 			var music = game.add.audio("sfx");
