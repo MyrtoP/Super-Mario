@@ -27,7 +27,6 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-		  var endtext;
 
 		
 		function preload() {
@@ -188,8 +187,6 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 							 backgroundAudio.stop();
-							var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
-							endtext = game.add.text(120, 150, "CONGRATULATIONS", style5);
 							endtext.text = "CONGRATS!";
 							endtext.fixedToCamera = true;
 					     player.body.enable = false;
