@@ -68,13 +68,10 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
-			sprite = game.add.sprite(200, 200, 'gameover');
-			sprite.inputEnabled = true;
-		        sprite.input.enableDrag();
-			var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: sprite.width, align: "center", backgroundColor: "#ffff00" };
-
-			 text = game.add.text(0, 0, "- game over!", style);
-			 text.anchor.set(0.5);
+			
+			sprite = game.make.sprite(0, 0, 'gameover');
+    			text = game.add.renderTexture(game.width, game.height);
+   			 game.add.sprite(0, 0, text);
 		 	//gameover = game.add.tileImage(0, 0, 3000, 3000, "gameover");
 			
 			//audio sprite
@@ -195,8 +192,10 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 							 backgroundAudio.stop();
-							text.x = Math.floor(sprite.x + sprite.width / 2);
-   						 text.y = Math.floor(sprite.y + sprite.height / 2);
+							if (!game.input.activePointer.position.isZero())
+							    {
+								text.renderXY(sprite, game.input.activePointer.x, game.input.activePointer.y, true);
+							    }
 					     player.body.enable = false;
 					     player.reset();
 			            }
