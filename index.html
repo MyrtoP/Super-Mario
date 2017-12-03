@@ -27,9 +27,8 @@ body {
 		  var livesText;
 		  var bonus = 0;
 		  var bonusText;
-		  var emitter;
-		 var txtValue;
-		 var endtext;
+		  var endtext;
+
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -139,10 +138,6 @@ body {
 			
 			
 			//emitter
-			emitter = game.add.emitter(0, 0, 100);
-			emitter.makeParticles('veggies');
-			emitter.gravity = 200;
-			game.input.onDown.add(particleBurst, this);
 		}
 		
 		function update(){
@@ -195,8 +190,7 @@ body {
 							 backgroundAudio.stop();
 							var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
 							endtext = game.add.text(120, 150, "CONGRATULATIONS", style5);
-							endtext.fixedToCamera=true;
-						 emitter.start(true, 2000, null, 10);
+							endtext.text = "CONGRATS!";
 					     player.body.enable = false;
 					     player.reset();
 			            }
@@ -231,13 +225,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					if(lives <= 0)
 					{
-						//alert('GAME OVER!\n Press F5 to reload');
-						var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
-						txtValue = game.add.text(280, 150, "GAME OVER", style5);
-						txtValue.visible = true;
-						txtValue.fixedToCamera=true; 
-						//txtValue.text = "Game over! ";
-						//txtValue.visible;
+						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
 					}
@@ -277,8 +265,7 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						//alert('GAME OVER!\n Press F5 to reload');
-						txtValue.text = "Game over! ";
+						alert('GAME OVER!\n Press F5 to reload');
 						game.paused = true;
 						music.stop();
 					}
