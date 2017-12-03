@@ -47,8 +47,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			game.load.spritesheet("gameover","assets/game-over.png");
-			game.load.script('gray', 'https://cdn.rawgit.com/photonstorm/phaser/master/v2/filters/Gray.js');
+			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -138,12 +137,15 @@ body {
 			
 			
 			//emitter
-			    emitter = game.add.emitter(game.world.centerX, 500, 200);
+			    eemitter = game.add.emitter(game.world.centerX, 500, 200);
+
 			    emitter.makeParticles('veggies');
+
 			    emitter.setRotation(0, 0);
 			    emitter.setAlpha(0.3, 0.8);
 			    emitter.setScale(0.5, 1);
 			    emitter.gravity = -200;
+			 emitter.start(true, 5000, 100);
 
 		}
 		
@@ -195,7 +197,7 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-						     emitter.start(false, 2032, 2016);
+						     emitter.start(true, 5000, 100);
 						     player.body.enable = false;
 						     player.reset();
 			            }
