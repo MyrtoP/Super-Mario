@@ -50,7 +50,7 @@ body {
 			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
-    			//game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
+    			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
 			
 		}
 		function create() {
@@ -141,6 +141,15 @@ body {
 			
 			
 			//emitter
+			emitter = game.add.emitter(game.world.centerX, 500, 200);
+
+			    emitter.makeParticles('veggies');
+
+			    emitter.setRotation(0, 0);
+			    emitter.setAlpha(0.3, 0.8);
+			    emitter.setScale(0.5, 1);
+			    emitter.gravity = -200;
+
 		}
 		
 		function update(){
@@ -192,6 +201,7 @@ body {
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
 						     gameover.tint = Math.random() * 0xffffff;
+						     emitter.start(false, 5000, 100);
 						     player.body.enable = false;
 						     player.reset();
 			            }
