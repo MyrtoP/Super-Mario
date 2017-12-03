@@ -128,9 +128,15 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
+			//Game over text
 			end = game.add.text(game.world.centerX,game.world.centerY,'You win!',{fontSize: '30px', fill:'#FFFFFF'});
 			end.visible = false;
+			
 			//emitter
+			emitter = game.add.emitter(0, 0, 100);
+			emitter.makeParticles('veggies');
+			emitter.gravity = 200;
+			game.input.onDown.add(particleBurst, this);
 		}
 		
 		function update(){
@@ -183,10 +189,9 @@ body {
 							// game.physics.arcade.collide(emitter);
 							 backgroundAudio.stop();
 							 end.visible = false;
-						//	emitter.start(false, 8000, 400);
-							/*game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-							emitter.destroy();
-						   }); */
+						 emitter.x = pointer.x;
+   						 emitter.y = pointer.y;
+						 emitter.start(true, 2000, null, 10);	
 					   player.body.enable = false;
 			            }
 			   }
