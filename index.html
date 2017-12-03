@@ -28,7 +28,7 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var emitter;
-		   var stateText;
+		   var go;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -128,8 +128,9 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			 var gameoverLabel = stateText = game.add.text(500, 300, ' ', {font: '50px Arial', fill: '#F2F2F2'});
-       			 stateText.anchor.setTo(1.1, 0.2);
+			go = this.game_state.game.add.text(this.game_state.game.world.width / 2, this.game_state.game.world.height * 0.4, "Game Over", this.text_style.game_over);
+    			go.anchor.setTo(0.5);
+    			this.game_state.groups.hud.add(go);
 			//emitter
 		}
 		
@@ -223,12 +224,7 @@ body {
 						//alert('GAME OVER!\n Press F5 to reload');
 						//game.physics.enable(gameover, Phaser.Physics.ARCADE);
 						//this.GameOver = game.add.text(60, 200, "GAME OVER", { fontSize: "50px", fill: "#a00000"});
-						stateText.text = " GAME OVER \n Click to restart";
-            					stateText.visible = true;
-						//the "click to restart" handler
-						    game.input.onTap.addOnce(function () {
-						    game.state.start('menu');});
-						}
+						//this.game_state.groups.hud.add(go);
 						game.paused = true;
 						music.stop();
 					}
