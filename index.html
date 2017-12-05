@@ -28,6 +28,7 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var teleportxt;
+		  var endinfo;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -142,6 +143,10 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
+			//songrats message
+			endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
+            		endinfo.fixedToCamera = true;
+			
 			//create teleport text
 			teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
@@ -203,6 +208,7 @@ body {
   						     emitter.start(false, 5000, 20);
 						     player.body.enable = false;
 						     emitter.destroy();
+						     endinfo.text= "GAME OVER"
 			            }
 			   }
                 
