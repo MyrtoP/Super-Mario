@@ -205,10 +205,11 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-  						     emitter.start(false, 5000, 20);
+  						    // emitter.start(false, 5000, 20);
 						     player.body.enable = false;
-						     emitter.destroy();
-						     endinfo.text= "GAME OVER"
+						     //emitter.destroy();
+						    // endinfo.text= "GAME OVER";
+						     alert('YOU WIN!\n Press F5 to reload');
 			            }
 			   }
                 
