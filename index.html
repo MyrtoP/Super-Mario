@@ -42,7 +42,7 @@ body {
 			this.load.spritesheet('boogie','assets/bg.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
-			//this.load.spritesheet("gameover","assets/game-over.png",16,16);
+			this.load.spritesheet("gameover","assets/game-over.png",16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
@@ -145,14 +145,17 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			//congrats message
-			endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
+			//endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
 		//	endinfo.set.anchor(0.5,0.5);
-            		endinfo.fixedToCamera = true;
-                   	endinfo.visible= false;
+            		//endinfo.fixedToCamera = true;
+                   	//endinfo.visible= false;
 			//endinfo = game.add.text(170, 10, 'YOU WIN!', {fontSize: '12px', fill:'#0B2F3A'});
 			//endinfo.fixedToCamera = true;
 			//endinfo.visible = false;
-			
+			game.add.sprite(0, 0, 'gameover');
+			    var titleStyle = { font: 'bold 30pt TheMinion', fill: '#FDFFB5', align: 'center'};
+			    var text = game.add.text(game.world.centerX, 100, "Congratulations", titleStyle);
+			    text.anchor.set(0.5);
 			//create teleport text
 			teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
@@ -216,8 +219,7 @@ body {
 						     backgroundAudio.stop();
   						    // emitter.start(false, 5000, 20);
 						   // gameover.enableBody = true;
-						   endinfo.text = "CONGRATULATIONS!!"
-						   endinfo.visible = true;
+						   text.text = "!" + text;
 						   // endinfo.fixedToCamera = true;
 						    //var sprite1 = game.add.sprite(220, 160, 'gameover');
 						    // emitter.destroy();
