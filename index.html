@@ -219,7 +219,6 @@ body {
 						   endinfo.text = "CONGRATULATIONS!!"
 						   endinfo.visible = true;
 						   // endinfo.fixedToCamera = true;
-            				endinfo.visible = true;
 						    //var sprite1 = game.add.sprite(220, 160, 'gameover');
 						    // emitter.destroy();
 						    // alert('YOU WIN!\n Press F5 to reload');
@@ -294,8 +293,8 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						game.paused = true;
 						music.stop();
+						game.paused = true;
 						alert('GAME OVER!\n Press F5 to reload');
 					}
 					else
