@@ -142,7 +142,7 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			//create teleport text
-			teleportxt = game.add.text(500,30,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
+			teleportxt = game.add.text(300,30,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			Livespite.fixedToCamera = false;
 			
 			//emitter
@@ -234,7 +234,7 @@ body {
 				});
 			} else {
 				lives --;
-				livesText.text = "Lives:       " + lives;
+				livesText.text = "Lives:       " + Livespite;
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
