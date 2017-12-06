@@ -42,7 +42,7 @@ body {
 			this.load.spritesheet('boogie','assets/bg.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
-			//this.load.spritesheet("gameover","assets/game-over.png",16,16);
+			this.load.spritesheet("gameover","assets/game-over.png",16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
@@ -51,7 +51,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			game.load.image("gameover","assets/game-over.png");
+			//game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -153,9 +153,7 @@ body {
 			//endinfo.fixedToCamera = true;
 			//endinfo.visible = false;
 			game.add.sprite(0, 0, 'gameover');
-			    var titleStyle = { font: 'bold 30pt TheMinion', fill: '#FDFFB5', align: 'center'};
-			    var text = game.add.text(game.world.centerX, 100, "Congratulations", titleStyle);
-			    text.anchor.set(0.5);
+			
 			//create teleport text
 			teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
@@ -258,7 +256,7 @@ body {
 						game.paused = true;
 						music.stop();
 						//alert('GAME OVER!\n Press F5 to reload');
-						game.state.start("gameover");
+						game.state.start('gameover');
 					}
 					else
 					{
