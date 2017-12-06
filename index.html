@@ -49,7 +49,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			game.load.image("gameover", "assets/game-over.png");
+			//game.load.image("gameover", "assets/game-over.png");
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -148,10 +148,6 @@ body {
 			//emitter
 			emitter = game.add.emitter(1936, 16,200);
 			emitter.makeParticles('veggies');
-			
-			//gameover = game.add.sprite(0, 0, 'gameover');
-			//gameover.enableBody = false;
-			
 		}
 		
 		function update(){
@@ -196,6 +192,7 @@ body {
 		       //teleport
 				if(player.body.onFloor() && cursors.down.isDown){
 					if(player.x > 27*16  && player.x< 28*16)
+						teleportxt.text = teleportxt + " " ;
 				     	player.reset(76*16,6*16);
 		        	}
 		     //end level and emitter
@@ -203,12 +200,8 @@ body {
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
   						    // emitter.start(false, 5000, 20);
-						     game.add.image(0, 0, 'gameover');
-						      gameover.enableBody = true;
-						   // endinfo.fixedToCamera = true;
-						    //var sprite1 = game.add.sprite(220, 160, 'gameover');
 						    // emitter.destroy();
-						    // alert('YOU WIN!\n Press F5 to reload');
+						     alert('YOU WIN!\n Press F5 to reload');
 			            }
 			   }
         } 
@@ -242,8 +235,7 @@ body {
 					{
 						game.paused = true;
 						music.stop();
-						//alert('GAME OVER!\n Press F5 to reload');
-						game.state.start('gameover');
+						alert('GAME OVER!\n Press F5 to reload');
 					}
 					else
 					{
@@ -283,8 +275,7 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						//alert('GAME OVER!\n Press F5 to reload');
-						game.state.start("gameover");
+						alert('GAME OVER!\n Press F5 to reload');
 					}
 					else
 					{
