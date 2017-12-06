@@ -42,7 +42,7 @@ body {
 			this.load.spritesheet('boogie','assets/bg.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
-			this.load.spritesheet("gameover","assets/game-over.png",16,16);
+			//this.load.spritesheet("gameover","assets/game-over.png",16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
@@ -145,13 +145,13 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			//congrats message
-			//endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
+			endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
 		//	endinfo.set.anchor(0.5,0.5);
-            //endinfo.fixedToCamera = false;
-           // endinfo.visible= false;
-			endinfo = game.add.text(170, 10, 'YOU WIN!', {fontSize: '12px', fill:'#0B2F3A'});
-			endinfo.fixedToCamera = true;
-			endinfo.visible = false;
+            		endinfo.fixedToCamera = true;
+                   	endinfo.visible= false;
+			//endinfo = game.add.text(170, 10, 'YOU WIN!', {fontSize: '12px', fill:'#0B2F3A'});
+			//endinfo.fixedToCamera = true;
+			//endinfo.visible = false;
 			
 			//create teleport text
 			teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
@@ -256,9 +256,7 @@ body {
 					{
 						game.paused = true;
 						music.stop();
-						//alert('GAME OVER!\n Press F5 to reload');
-						var gameover = game.add.sprite(0, 0, 'gameover');
-						gameover.enableBody = true;
+						alert('GAME OVER!\n Press F5 to reload');
 					}
 					else
 					{
@@ -299,8 +297,6 @@ body {
 						game.paused = true;
 						music.stop();
 						alert('GAME OVER!\n Press F5 to reload');
-						var gameover = game.add.sprite(0, 0, 'gameover');
-						gameover.enableBody = true;
 					}
 					else
 					{
