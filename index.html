@@ -143,11 +143,13 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			//create teleport text
-			teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
+			//teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			//emitter
-			emitter = game.add.emitter(1936, 16,200);
+			//emitter = game.add.emitter(1936, 16,200);
+			emitter = game.add.emitter(game.world.centerX, 200, 200);
 			emitter.makeParticles('veggies');
+		       
 		}
 		
 		function update(){
@@ -199,7 +201,7 @@ body {
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-  						    // emitter.start(false, 5000, 20);
+  						     emitter.start(false, 5000, 20);
 						    // emitter.destroy();
 						     alert('YOU WIN!\n Press F5 to reload');
 			            }
