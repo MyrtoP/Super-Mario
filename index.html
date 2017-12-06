@@ -219,7 +219,7 @@ body {
 						     backgroundAudio.stop();
   						    // emitter.start(false, 5000, 20);
 						   // gameover.enableBody = true;
-						   text.text = "!" + text;
+						   var text =  game.add.text(1,32,'Congratulations ',{font: 'bold 20pt TheMinion', fill: '#FDFFB5', align: 'center'});
 						   // endinfo.fixedToCamera = true;
 						    //var sprite1 = game.add.sprite(220, 160, 'gameover');
 						    // emitter.destroy();
@@ -257,7 +257,8 @@ body {
 					{
 						game.paused = true;
 						music.stop();
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						game.state.start("GameOver");
 					}
 					else
 					{
@@ -297,7 +298,8 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						game.state.start("GameOver");
 					}
 					else
 					{
