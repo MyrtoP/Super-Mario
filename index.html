@@ -42,7 +42,7 @@ body {
 			this.load.spritesheet('boogie','assets/bg.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
-			this.load.spritesheet("gameover","assets/game-over.png",16,16);
+			//this.load.spritesheet("gameover","assets/game-over.png",16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
@@ -51,7 +51,7 @@ body {
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
-			//game.load.image("gameover","assets/game-over.png");
+			game.load.image("gameover","assets/game-over.png");
 			
 			//load emiter spritesheet
     			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
@@ -258,7 +258,7 @@ body {
 						game.paused = true;
 						music.stop();
 						//alert('GAME OVER!\n Press F5 to reload');
-						game.state.start("GameOver");
+						game.state.start("gameover");
 					}
 					else
 					{
@@ -299,7 +299,7 @@ body {
 						music.stop();
 						game.paused = true;
 						//alert('GAME OVER!\n Press F5 to reload');
-						game.state.start("GameOver");
+						game.state.start("gameover");
 					}
 					else
 					{
