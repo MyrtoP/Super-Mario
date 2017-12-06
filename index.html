@@ -28,7 +28,7 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var teleportxt;
-		  var endinfo;
+	          var go;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -141,8 +141,12 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
+			//GAME OVER text
+			go = game.add.text(170, 10, ' ', {fontSize: '12px', fill:'#0B2F3A'});
+			go.visible = false;
+			
 			//create teleport text
-			teleportxt = game.add.text(300,30,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
+			teleportxt = game.add.text(190,50,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			Livespite.fixedToCamera = false;
 			
 			//emitter
@@ -201,16 +205,16 @@ body {
 					if(player.x > 27*16  && player.x< 28*16)
 						teleportxt.text = teleportxt + " " ;
 				     		player.reset(76*16,6*16);
-		        	}
-		     //end level and emitter
+		        }
+		        //end level and emitter
 			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-  						    // emitter.start(false, 5000, 20);
-						     emitter.start(false, 8000, 400);
+  						     emitter.start(false, 5000, 20);
+						    // emitter.start(false, 8000, 400);
 						     emitter.destroy();
 						     alert('YOU WIN!\n Press F5 to reload');
-			            }
+			              }
 			   }
                 } 
 			
@@ -234,7 +238,7 @@ body {
 				});
 			} else {
 				lives --;
-				livesText.text = "Lives:       " + Livespite;
+				livesText.text = "Lives:       " + lives;
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
@@ -283,7 +287,9 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						go.text = "GAME OVER!" + go;
+						go.visible = true;
 					}
 					else
 					{
