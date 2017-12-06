@@ -42,6 +42,7 @@ body {
 			this.load.spritesheet('boogie','assets/bg.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
+			this.load.spritesheet("gameover","assets/game-over.png",16,16);
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
 			//load music
@@ -69,8 +70,7 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 			background = game.add.tileSprite(0, 0, 3000, 3000, "background");
 			
-		 	//help = game.add.tileSprite(0, 0, 3000, 3000, "gameover");
-			
+		
 			//audio sprite
 			var music = game.add.audio("sfx");
 			music.play();
@@ -143,16 +143,23 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
 			bonusText.fixedToCamera = true;
 			
-			//songrats message
-			endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
-            		endinfo.fixedToCamera = true;
-			
+			//congrats message
+			//endinfo = game.add.text(70,46,'  ', {fontSize:'20px', fill:'#00FFFF'});
+		//	endinfo.set.anchor(0.5,0.5);
+            //endinfo.fixedToCamera = false;
+           // endinfo.visible= false;
+			endinfo = game.add.text(170, 10, 'YOU WIN!', {fontSize: '12px', fill:'#0B2F3A'});
+			endinfo.fixedToCamera = true;
+			endinfo.visible = false;
 			//create teleport text
 			teleportxt = game.add.text(432,448,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			//emitter
 			emitter = game.add.emitter(1936, 16,200);
 			emitter.makeParticles('veggies');
+			//var sprite = game.add.sprite(0,0,'gameover');
+			gameover = game.add.sprite(0, 0, 'gameover');
+			gameover.enableBody = false;
 			
 		}
 		
@@ -200,21 +207,23 @@ body {
 					if(player.x > 27*16  && player.x< 28*16)
 				     	player.reset(76*16,6*16);
 		        	}
-			
-			     //end level and emitter
+		     //end level and emitter
         			if(player.body.onFloor() && cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
   						    // emitter.start(false, 5000, 20);
-						     player.body.enable = false;
-						     //emitter.destroy();
-						    // endinfo.text= "GAME OVER";
-						     alert('YOU WIN!\n Press F5 to reload');
+						   // gameover.enableBody = true;
+						   endinfo.text = "CONGRATULATIONS!! "+ endinfo;
+						   endinfo.visible = true;
+						   // endinfo.fixedToCamera = true;
+            				endinfo.visible = true;
+						    //var sprite1 = game.add.sprite(220, 160, 'gameover');
+						    // emitter.destroy();
+						    // alert('YOU WIN!\n Press F5 to reload');
 			            }
 			   }
-                
         } 
-				
+			
 		function coinOverlap(player, coin) {
 			coin.kill();
 			var coinSound = new Audio('audio/coin.wav');
@@ -244,7 +253,9 @@ body {
 					{
 						game.paused = true;
 						music.stop();
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						gameover = game.add.sprite(0, 0, 'gameover');
+						gameover.enableBody = true;
 					}
 					else
 					{
@@ -271,7 +282,7 @@ body {
 					bonusText.text = "Bonus: " + bonus;
 					if(bonus == 6){
 						lives++;
-						livesText.text = "Lives:" + lives;
+						livesText.text = "Lives:       " + lives;
 					}
 				});
 			} else {
@@ -284,7 +295,9 @@ body {
 					if(lives <= 0){
 						game.paused = true;
 						music.stop();
-						alert('GAME OVER!\n Press F5 to reload');
+						//alert('GAME OVER!\n Press F5 to reload');
+						gameover = game.add.sprite(0, 0, 'gameover');
+						gameover.enableBody = true;
 					}
 					else
 					{
