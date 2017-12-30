@@ -104,7 +104,7 @@ body {
 			boogie = game.add.group();
 			boogie.enableBody = true;
 			map.createFromTiles(3, null, 'boogie', 'stuff',boogie);
-			boogie.callAll('animations.add', 'animations', 'walkt', [ 0, 1, 2, 3, 4, 5],10, true);
+			boogie.callAll('animations.add', 'animations', 'walkt', [ 0, 1, 2, 3, 4, 5],5, true);
 			boogie.callAll('animations.play', 'animations', 'walkt');
 			boogie.setAll('body.bounce.x', 1);
 			boogie.setAll('body.velocity.x', -20);
