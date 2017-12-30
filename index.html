@@ -51,7 +51,7 @@ body {
 			game.load.image("background", "assets/picture.png");
 			
 			//load emiter spritesheet
-    			game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
+    			//game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
 			
 		}
 		function create() {
@@ -96,7 +96,7 @@ body {
 			goombas.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],2, true);
 			goombas.callAll('animations.play', 'animations', 'walk');
 			goombas.setAll('body.bounce.x', 1);
-			goombas.setAll('body.velocity.x', 20);
+			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
 			
 			
