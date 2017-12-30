@@ -28,7 +28,6 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var teleportxt;
-	          var go;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -107,7 +106,7 @@ body {
 			star.callAll('animations.add', 'animations', 'walkt', [ 0, 1,],2, true);
 			star.callAll('animations.play', 'animations', 'walkt');
 			star.setAll('body.bounce.x', 1);
-			star.setAll('body.velocity.x', 20);
+			star.setAll('body.velocity.x', 30);
 			star.setAll('body.gravity.y', 500);
 			
 			
@@ -197,8 +196,8 @@ body {
 					     //emitter.start(false, 5000, 20);
 					    // emitter.start(false, 8000, 400);
 					     //emitter.destroy();
-					    // alert('YOU WIN!\n Press F5 to reload');
-						game.state.start("endlevel");
+					     alert('YOU WIN!\n Press F5 to reload');
+						//game.state.start("endlevel");
 			                }
 			  	 }
                   } 
@@ -224,8 +223,8 @@ body {
 					{
 						//game.paused = true;
 						music.stop();
-						//alert('GAME OVER!\n Press F5 to reload');
-						game.state.start("GameOver");
+						alert('GAME OVER!\n Press F5 to reload');
+						//game.state.start("GameOver");
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -265,9 +264,9 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						//alert('GAME OVER!\n Press F5 to reload');
-						go.text = "GAME OVER!" + go;
-						go.visible = true;
+						alert('GAME OVER!\n Press F5 to reload');
+						//go.text = "GAME OVER!" + go;
+						//go.visible = true;
 					}
 					else
 					{
