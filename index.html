@@ -39,7 +39,7 @@ body {
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
-			this.load.spritesheet('boogie','assets/starss.png',16,16);
+			this.load.spritesheet('star','assets/starss.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
 			//load map   
@@ -100,15 +100,15 @@ body {
 			goombas.setAll('body.gravity.y', 500);
 			
 			
-			//boogie
-			boogie = game.add.group();
-			boogie.enableBody = true;
-			map.createFromTiles(3, null, 'boogie', 'stuff',boogie);
-			boogie.callAll('animations.add', 'animations', 'walkt', [ 0, 0, 1,],2, true);
-			boogie.callAll('animations.play', 'animations', 'walkt');
-			boogie.setAll('body.bounce.x', 1);
-			boogie.setAll('body.velocity.x', 20);
-			boogie.setAll('body.gravity.y', 500);
+			//star
+			star = game.add.group();
+			star.enableBody = true;
+			map.createFromTiles(3, null, 'star', 'stuff',star);
+			star.callAll('animations.add', 'animations', 'walkt', [ 0, 1,],2, true);
+			star.callAll('animations.play', 'animations', 'walkt');
+			star.setAll('body.bounce.x', 1);
+			star.setAll('body.velocity.x', 20);
+			star.setAll('body.gravity.y', 500);
 			
 			
 			//player
@@ -164,11 +164,11 @@ body {
 			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
-			game.physics.arcade.collide(boogie, layer);
+			game.physics.arcade.collide(star, layer);
 						
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.overlap(player, boogie, boogieOverlap);
+			game.physics.arcade.overlap(player, star, boogieOverlap);
 			
 			//player movement
 			if (player.body.enable) {
@@ -226,36 +226,29 @@ body {
 			scoreDisplay.text = "Score: " + score; 
 		}
 				
-        	function boogieOverlap(player, boogie) {
-				if (player.body.touching.down) {
-				boogie.animations.stop();
-				boogie.frame = 2;
-				boogie.body.enable = false;
-				player.body.velocity.y = -80;
-				game.time.events.add(Phaser.Timer.SECOND, function() {
-					boogie.kill();
-				});
-			} else {
+        	function starOverlap(player, star) {
+				star.frame = 2;
 				lives --;
 				livesText.text = "Lives:       " + lives;
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-						game.paused = true;
+						//game.paused = true;
 						music.stop();
-						alert('GAME OVER!\n Press F5 to reload');
-					}
-					else
-					{
+						//alert('GAME OVER!\n Press F5 to reload');
+						game.state.start("GameOver");
+					}else{
+						player.frame=0;
+						player.reset(16,game.world.height-48);
+						game.time.events.add(Phaser.Timer.SECOND,function() {
 						player.invincible= false ;
 						player.body.enable = true;
-						player.reset(16,game.world.height - 48);
+					    });
 					}
 				});
-			}
 		}
 		
 	        function goombaOverlap(player, goomba){
