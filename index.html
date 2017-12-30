@@ -39,7 +39,7 @@ body {
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
-			this.load.spritesheet('boogie','assets/imageedit_13_9100091211.png',16,16);
+			this.load.spritesheet('boogie','assets/boogieoogie.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
 			//load map   
@@ -104,10 +104,10 @@ body {
 			boogie = game.add.group();
 			boogie.enableBody = true;
 			map.createFromTiles(3, null, 'boogie', 'stuff',boogie);
-			boogie.callAll('animations.add', 'animations', 'walkt', [ 0, 1, 2, 3, 4, 5],10, true);
-			boogie.callAll('animations.play', 'animations', 'walkt');
-			//boogie.animations.add('walkRightt', [0, 1, 2, 3, 4, 5], 10, true);
-			//boogie.animations.add('walkLeftt', [ 6,7,8,9, ], 10, true);
+			//boogie.callAll('animations.add', 'animations', 'walkt', [ 0, 1, 2, 3, 4, 5],10, true);
+			//boogie.callAll('animations.play', 'animations', 'walkt');
+			boogie.animations.add('walkRightt', [0, 1, 2, 3, 4, 5], 10, true);
+			boogie.animations.add('walkLeftt', [ 6,7,8,9, ], 10, true);
 			boogie.setAll('body.bounce.x', 1);
 			boogie.setAll('body.velocity.x', -20);
 			boogie.setAll('body.gravity.y', 500);
