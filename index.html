@@ -40,7 +40,7 @@ body {
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
 			this.load.spritesheet('star','assets/starss.png',16,16);
-			//this.load.spritesheet('heart','assets/heart.png',16,16);
+			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/map345.json', null,Phaser.Tilemap.TILED_JSON);
@@ -132,9 +132,9 @@ body {
 			livesText.fixedToCamera = true;
 			
 			//create heart sprite
-			//Livespite = game.add.sprite(118,10,'heart');
-			//Livespite.enableBody = true;
-			//Livespite.fixedToCamera = true;
+			Livespite = game.add.sprite(118,10,'heart');
+			Livespite.enableBody = true;
+			Livespite.fixedToCamera = true;
 			
 			//Bonus text
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
