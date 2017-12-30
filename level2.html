@@ -164,11 +164,11 @@ body {
 			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
-			game.physics.arcade.collide(boogie, layer);
+			game.physics.arcade.collide(evil, layer);
 						
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.overlap(player, boogie, boogieOverlap);
+			game.physics.arcade.overlap(player, evil, evilOverlap);
 			
 			//player movement
 			if (player.body.enable) {
