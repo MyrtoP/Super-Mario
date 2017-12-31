@@ -46,11 +46,9 @@ body {
 			//load music
 			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
-			//load background image
+			//load background image,game over
 			game.load.image("background", "assets/picture.png");
-			
-			//load emiter spritesheet
-    			//game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
+			game.load.image("end","assets/game-over.png");
 			
 		}
 		function create() {
@@ -193,10 +191,7 @@ body {
 			if(cursors.down.isDown){
 					if (player.x < 2032 && player.x > 2016){
 					     backgroundAudio.stop();
-					     //emitter.start(false, 5000, 20);
-					    // emitter.start(false, 8000, 400);
-					     //emitter.destroy();
-					     alert('YOU WIN!\n Press F5 to reload');
+					    // alert('YOU WIN!\n Press F5 to reload');
 						//game.state.start("endlevel");
 			                }
 			  	 }
@@ -223,8 +218,8 @@ body {
 					{
 						//game.paused = true;
 						music.stop();
-						alert('GAME OVER!\n Press F5 to reload');
-						//game.state.start("GameOver");
+						//alert('GAME OVER!\n Press F5 to reload');
+						 game.add.sprite(0, 0, 'end');
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -264,9 +259,7 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						alert('GAME OVER!\n Press F5 to reload');
-						//go.text = "GAME OVER!" + go;
-						//go.visible = true;
+						game.add.sprite(0, 0, 'end');
 					}
 					else
 					{
