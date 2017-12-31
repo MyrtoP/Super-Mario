@@ -190,6 +190,7 @@ body {
 						player.frame = 12;
 				}
 			}
+			gameOver.enableBody = true;
 		       //teleport
 			if(player.body.onFloor() && cursors.down.isDown){
 					if(player.x > 27*16  && player.x< 28*16)
@@ -229,7 +230,7 @@ body {
 					if(lives <= 0)
 					{
 						music.stop();
-						gameOver.enableBody = true;
+						//gameOver.enableBody = true;
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
