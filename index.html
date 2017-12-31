@@ -143,7 +143,6 @@ body {
 			
 			 //var GameOver = game.add.sprite(0, 0, 'end');
 			// GameOver.enableBody = false;
-			game.add.sprite(0, 0, 'end');
 			
 		}
 		
@@ -222,7 +221,7 @@ body {
 					if(lives <= 0)
 					{
 						music.stop();
-						GameOver.enableBody = true;
+						game.add.sprite(0, 0, 'end');
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -261,8 +260,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						music.stop();
-						game.paused = true;
-						//GameOver.enableBody = true;
+						//game.paused = true;
+						game.add.sprite(0, 0, 'end');
 					}
 					else
 					{
