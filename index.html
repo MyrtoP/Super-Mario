@@ -28,6 +28,8 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var teleportxt;
+		  var gameOver;
+		  var win;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -46,9 +48,10 @@ body {
 			//load music
 			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
-			//load background image,game over
+			//load background image,game over and congratulation for ending the level
 			game.load.image("background", "assets/picture.png");
 			game.load.image("end","assets/game-over.png");
+			game.load.image("congrats","assets/congrats.jpg");
 			
 		}
 		function create() {
@@ -141,9 +144,11 @@ body {
 			teleportxt = game.add.text(400,60,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			
-			 var GameOver = game.add.sprite(100, 5, 'end');
-			 GameOver.enableBody = false;
-			
+			 gameOver = game.add.sprite(100, 5, 'end');
+			 gameOver.enableBody = false;
+		
+			 win = game.add.sprite(0,0,'congrats');
+			 win.enableBody = false;
 		}
 		
 		function update(){
@@ -192,11 +197,14 @@ body {
 				     		player.reset(76*16,6*16);
 		        }
 		        //end level and emitter
-			if(cursors.down.isDown){
+			if(player.body.onFloor() && cursors.down.isDown){
 					if (player.x < 2032 && player.x > 2016){
 					     backgroundAudio.stop();
-					    // alert('YOU WIN!\n Press F5 to reload');
+					     win.enableBody = true;
 						//game.state.start("endlevel");
+						 game.time.events.add(2000,function(){
+							game.state.start("level2");
+						});
 			                }
 			  	 }
                   } 
@@ -221,7 +229,7 @@ body {
 					if(lives <= 0)
 					{
 						music.stop();
-						GameOver.enableBody = true;
+						gameOver.enableBody = true;
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -260,8 +268,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						music.stop();
-						//game.paused = true;
-						GameOver.enableBody = true;
+						gameOver.enableBody = true;
 					}
 					else
 					{
