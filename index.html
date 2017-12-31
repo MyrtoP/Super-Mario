@@ -147,8 +147,11 @@ body {
 			 gameOver = game.add.sprite(100, 5, 'end');
 			 gameOver.enableBody = false;
 		
-			 win = game.add.sprite(100,100,'congrats');
-			 win.enableBody = false;
+			// win = game.add.sprite('congrats');
+			 //win.enableBody = false;
+			 win = game.cache.getImage('congrats');
+			game.add.sprite(game.world.centerX - win.width/2.0,game.world.centerY - win.height/2.0,'congrats');
+			win.enableBody = false;
 		}
 		
 		function update(){
