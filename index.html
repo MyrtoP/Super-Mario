@@ -201,6 +201,7 @@ body {
 			if(player.body.onFloor() && cursors.down.isDown){
 					if (player.x < 2032 && player.x > 2016){
 					     backgroundAudio.stop();
+					     game.state.start("win");
 					     win.enableBody = true;
 						//game.state.start("endlevel");
 						 game.time.events.add(2000,function(){
@@ -231,6 +232,7 @@ body {
 					{
 						music.stop();
 						//gameOver.enableBody = true;
+						game.state.start("gameOver");
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -269,7 +271,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						music.stop();
-						gameOver.enableBody = true;
+						game.state.start("gameOver");
 					}
 					else
 					{
