@@ -140,6 +140,11 @@ body {
 			//create teleport text
 			teleportxt = game.add.text(400,60,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
+			
+			 var GameOver = game.add.sprite(0, 0, 'end');
+			 GameOver.enableBody = false;
+			
+			
 		}
 		
 		function update(){
@@ -216,10 +221,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-						//game.paused = true;
 						music.stop();
-						//alert('GAME OVER!\n Press F5 to reload');
-						 game.add.sprite(0, 0, 'end');
+						GameOver.enableBody = true;
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -259,7 +262,7 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						game.add.sprite(0, 0, 'end');
+						GameOver.enableBody = true;
 					}
 					else
 					{
