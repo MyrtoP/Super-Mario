@@ -141,9 +141,9 @@ body {
 			teleportxt = game.add.text(400,60,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			
-			 var GameOver = game.add.sprite(0, 0, 'end');
-			 GameOver.enableBody = false;
-			
+			 //var GameOver = game.add.sprite(0, 0, 'end');
+			// GameOver.enableBody = false;
+			game.add.sprite(0, 0, 'end');
 			
 		}
 		
@@ -262,7 +262,7 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						GameOver.enableBody = true;
+						//GameOver.enableBody = true;
 					}
 					else
 					{
