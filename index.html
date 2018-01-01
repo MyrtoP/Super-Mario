@@ -50,7 +50,8 @@ body {
 			
 			//load background image,game over and congratulation for ending the level
 			game.load.image("background", "assets/picture.png");
-			game.load.image("end","assets/game-over.png");
+			//game.load.image("end","assets/game-over.png"); 
+			game.load.image("end","assets/images.jpg");
 			game.load.image("congrats","assets/congrats.jpg");
 			
 		}
@@ -161,6 +162,8 @@ body {
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			game.physics.arcade.overlap(player, star, starOverlap);
 			
+			gameOver.enableBody = true;
+			
 			//player movement
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -190,7 +193,7 @@ body {
 						player.frame = 12;
 				}
 			}
-			gameOver.enableBody = true;
+			
 		       //teleport
 			if(player.body.onFloor() && cursors.down.isDown){
 					if(player.x > 27*16  && player.x< 28*16)
