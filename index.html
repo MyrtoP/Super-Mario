@@ -39,8 +39,7 @@ body {
 			//load spritesheets
 			this.load.spritesheet('tiles2017', 'assets/tiles2017.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
-			//this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
-			this.load.spritesheet('mario', 'assets/marionew.png', 16, 16);
+			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
 			this.load.spritesheet('star','assets/starss.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
@@ -155,7 +154,8 @@ body {
 		
 			 //win = game.add.sprite( 0, 0,'congrats');
 			 //win.enableBody = false;
-			 
+			  button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
+			  button.enableBody = false;
 
 		}
 		
@@ -212,25 +212,17 @@ body {
 					     player.body.enable = false;
 						 player.animations.stop();
 					     //win.enableBody = true;
-						// game.state.start("endlevel");
-						 game.state.start(game.state.current);
-						 score = 0;
-						 lives = 3;
-						/* game.time.events.add(2000,function(){
-						 	game.state.add('level2', level2,true);
-							game.state.start("Level2");
-						});*/
-						
-						//win = game.add.sprite( (3 * 16) - 2, (9 * 16) + 10, 'congrats');
-                 button = game.add.button((10 * 16) -2, (18 * 16), 'button', actionOnClick, this, 2, 1, 0);
-						
+					    button.enableBody = true;
+                // button = game.add.button((10 * 16) -2, (18 * 16), 'button', actionOnClick, this, 2, 1, 0);
+                 // game.state.start("https://github.com/MyrtoP/Super-Mario/level2.html");
+						//<meta http-equiv="refresh" content="0; url=https://github.com/MyrtoP/Super-Mario/level2.html" />
 			                }
 			  	 }
                   } 
 			
-		function actionOnClick () {
-                     location.href = "https://github.com/MyrtoP/Super-Mario/blob/gh-pages/level2.html";
-						}	
+		  function actionOnClick () {
+                     location.href = "https://github.com/MyrtoP/Super-Mario/level2.html";
+					}	
 		function coinOverlap(player, coin) {
 			coin.kill();
 			var coinSound = new Audio('audio/coin.wav');
