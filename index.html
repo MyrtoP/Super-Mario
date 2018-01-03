@@ -131,7 +131,7 @@ body {
 			scoreDisplay.fixedToCamera = true;
 			
 			//Lives text
-		        livesText = game.add.text(80,10, 'Lives:       3 ', { fontSize: '12px', fill: '#9C0913'});
+		        livesText = game.add.text(80,10, 'Lives:       3 ', { fontSize: '12px', fill: '#FFFFFF'});
 			livesText.fixedToCamera = true;
 			
 			//create heart sprite
@@ -140,15 +140,15 @@ body {
 			Livespite.fixedToCamera = true;
 			
 			//Bonus text
-			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
+			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#FFFFFF'});
 			bonusText.fixedToCamera = true;
 			
 			//create teleport text
 			teleportxt = game.add.text(414,67,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			
-			 gameOver = game.add.sprite(100, 50,'end');
-			 gameOver.enableBody = false;
+			 //gameOver = game.add.sprite(100, 50,'end');
+			// gameOver.enableBody = false;
 		
 			// win = game.add.sprite( 0, 0,'congrats');
 			// win.enableBody = false;
@@ -196,8 +196,7 @@ body {
 			}
 			
 		       //teleport
-			if(player.body.onFloor() && cursors.down.isDown){
-					if(player.x > 27*16  && player.x < 28*16)
+					if(player.body.onFloor() && cursors.down.isDown && player.x > 27*16  && player.x < 28*16 ){
 						teleportxt.text = teleportxt + " " ;
 				     		player.reset(79*16,7*16);
 		        }
@@ -214,7 +213,7 @@ body {
 						 score = 0;
 						 lives = 3;
 						 game.time.events.add(2000,function(){
-						 	game.state.add('level2', level2);
+						 	game.state.add('level2', level2,true);
 							game.state.start("Level2");
 						});
 			                }
