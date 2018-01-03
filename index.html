@@ -56,6 +56,8 @@ body {
 			this.load.spritesheet('end','assets/images.jpg',16,16);
 			game.load.image("congrats","assets/congrats.jpg");
 			
+			game.load.spritesheet('button',"extensions/imageedit_2_5951099168.png",16,16);
+			
 		}
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -150,8 +152,9 @@ body {
 			 //gameOver = game.add.sprite(100, 50,'end');
 			// gameOver.enableBody = false;
 		
-			// win = game.add.sprite( 0, 0,'congrats');
-			// win.enableBody = false;
+			 //win = game.add.sprite( 0, 0,'congrats');
+			 //win.enableBody = false;
+			 
 
 		}
 		
@@ -212,14 +215,21 @@ body {
 						 game.state.start(game.state.current);
 						 score = 0;
 						 lives = 3;
-						 game.time.events.add(2000,function(){
+						/* game.time.events.add(2000,function(){
 						 	game.state.add('level2', level2,true);
 							game.state.start("Level2");
-						});
+						});*/
+						
+						//win = game.add.sprite( (3 * 16) - 2, (9 * 16) + 10, 'congrats');
+                 button = game.add.button((10 * 16) -2, (18 * 16), 'button', actionOnClick, this, 2, 1, 0);
+						
 			                }
 			  	 }
                   } 
 			
+		function actionOnClick () {
+                     location.href = "https://github.com/MyrtoP/Super-Mario/blob/gh-pages/level2.html";
+						}	
 		function coinOverlap(player, coin) {
 			coin.kill();
 			var coinSound = new Audio('audio/coin.wav');
