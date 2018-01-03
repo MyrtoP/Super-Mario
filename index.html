@@ -20,6 +20,7 @@ body {
 			update : update
 		}, false, false);
 		
+		
 		//Score and Live as global variables
  		  var score = 0;
 		  var scoreDisplay;
@@ -51,7 +52,8 @@ body {
 			//load background image,game over and congratulation for ending the level
 			game.load.image("background", "assets/picture.png");
 			//game.load.image("end","assets/game-over.png"); 
-			game.load.image("end","assets/images.jpg");
+			//game.load.image("end","assets/images.jpg");
+			this.load.spritesheet('end','assets/images.jpg',16,16);
 			game.load.image("congrats","assets/congrats.jpg");
 			
 		}
@@ -142,14 +144,15 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			//create teleport text
-			teleportxt = game.add.text(400,60,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
+			teleportxt = game.add.text(414,67,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
 			
-			 gameOver = game.add.sprite( 0, 0,'end');
+			 gameOver = game.add.sprite(100, 50,'end');
 			 gameOver.enableBody = false;
 		
-			 win = game.add.sprite( 0, 0,'congrats');
-			 win.enableBody = false;
+			// win = game.add.sprite( 0, 0,'congrats');
+			// win.enableBody = false;
+
 		}
 		
 		function update(){
@@ -161,8 +164,6 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			game.physics.arcade.overlap(player, star, starOverlap);
-			
-			gameOver.enableBody = true;
 			
 			//player movement
 			if (player.body.enable) {
@@ -196,19 +197,25 @@ body {
 			
 		       //teleport
 			if(player.body.onFloor() && cursors.down.isDown){
-					if(player.x > 27*16  && player.x< 28*16)
+					if(player.x > 27*16  && player.x < 28*16)
 						teleportxt.text = teleportxt + " " ;
-				     		player.reset(76*16,6*16);
+				     		player.reset(79*16,7*16);
 		        }
 		        //end level and emitter
 			if(player.body.onFloor() && cursors.down.isDown){
 					if (player.x < 2032 && player.x > 2016){
+						theme.stop();
 					     backgroundAudio.stop();
-					    // game.state.start("win");
+					     player.body.enable = false;
+						 player.animations.stop();
 					     //win.enableBody = true;
-						//game.state.start("endlevel");
+						// game.state.start("endlevel");
+						 game.state.start(game.state.current);
+						 score = 0;
+						 lives = 3;
 						 game.time.events.add(2000,function(){
-							game.state.start("level2");
+						 	game.state.add('level2', level2);
+							game.state.start("Level2");
 						});
 			                }
 			  	 }
@@ -234,8 +241,7 @@ body {
 					if(lives <= 0)
 					{
 						music.stop();
-						//gameOver.enableBody = true;
-						game.state.start("gameOver");
+				    	gameOver.enableBody = true;
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -274,7 +280,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						music.stop();
-						game.state.start("gameOver");
+						gameOver.enableBody = true;
 					}
 					else
 					{

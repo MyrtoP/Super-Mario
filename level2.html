@@ -48,10 +48,8 @@ body {
 			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
 			//load background image
-			game.load.image("background", "assets/mariobros.png");
+			game.load.image("background", "assets/picture.png");
 			
-			//load emiter spritesheet
-    			//game.load.spritesheet('veggies', 'assets/fruitnveg32wh37.png',16,16);
 			
 		}
 		function create() {
@@ -128,7 +126,7 @@ body {
 			scoreDisplay.fixedToCamera = true;
 			
 			 //Lives text
-		         livesText = game.add.text(80,10, 'Lives:       3 ', { fontSize: '12px', fill: '#9C0913'});
+		         livesText = game.add.text(80,10, 'Lives:       3 ', { fontSize: '12px', fill: '#FFFFFF'});
 			 livesText.fixedToCamera = true;
 			
 			//create heart sprite
@@ -137,7 +135,7 @@ body {
 			Livespite.fixedToCamera = true;
 			
 			//Bonus text
-			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#0B2F3A'});
+			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#FFFFFF'});
 			bonusText.fixedToCamera = true;
 			
 			//GAME OVER text
@@ -145,19 +143,9 @@ body {
 			go.visible = false;
 			
 			//create teleport text
-			teleportxt = game.add.text(400,60,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
-			Livespite.fixedToCamera = false;
+			teleportxt = game.add.text(300,110,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
+			Livespite.fixedToCamera = tue;
 			
-			//emitter
-			//emitter = game.add.emitter(1936, 16,200);
-			//emitter.makeParticles('veggies');
-			emitter = game.add.emitter(game.world.centerX, game.world.centerY, 250);
-		        emitter.makeParticles('veggies', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 200, true, true);
-		        emitter.minParticleSpeed.setTo(-200, -300);
-			emitter.maxParticleSpeed.setTo(200, -400);
-			emitter.gravity = 150;
-			emitter.bounce.setTo(0.5, 0.5);
-			emitter.angularDrag = 30;
 		}
 		
 		function update(){
@@ -201,17 +189,14 @@ body {
 			}
 		       //teleport
 			if(player.body.onFloor() && cursors.down.isDown){
-					if(player.x > 27*16  && player.x< 28*16)
+					if(player.x > 20*16  && player.x < 21*16)
 						teleportxt.text = teleportxt + " " ;
 				     		player.reset(76*16,6*16);
 		        }
-		        //end level and emitter
-			if(player.body.onFloor() && cursors.down.isDown){
+		        //end level 
+			if(cursors.down.isDown){
 						if (player.x < 2032 && player.x > 2016){
 						     backgroundAudio.stop();
-  						     emitter.start(false, 5000, 20);
-						    // emitter.start(false, 8000, 400);
-						     emitter.destroy();
 						     alert('YOU WIN!\n Press F5 to reload');
 			              }
 			   }
@@ -227,35 +212,26 @@ body {
 		}
 				
         	function evilOverlap(player, evil) {
-				if (player.body.touching.down) {
-				evil.animations.stop();
-				evil.frame = 2;
-				evil.body.enable = false;
-				player.body.velocity.y = -80;
-				game.time.events.add(Phaser.Timer.SECOND, function() {
-					evil.kill();
-				});
-			} else {
+				star.frame = 2;
 				lives --;
 				livesText.text = "Lives:       " + lives;
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-						game.paused = true;
 						music.stop();
-						alert('GAME OVER!\n Press F5 to reload');
-					}
-					else
-					{
+						theme.stop();
+					}else{
+						player.frame=0;
+						player.reset(16,game.world.height-48);
+						game.time.events.add(Phaser.Timer.SECOND,function() {
 						player.invincible= false ;
 						player.body.enable = true;
-						player.reset(16,game.world.height - 48);
+					    });
 					}
 				});
-			}
 		}
 		
 	        function goombaOverlap(player, goomba){
