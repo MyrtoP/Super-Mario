@@ -102,7 +102,7 @@ body {
 			//star
 			star = game.add.group();
 			star.enableBody = true;
-			map.createFromTiles(3, null, 'evil', 'stuff',star);
+			map.createFromTiles(3, null, 'star', 'stuff',star);
 			star.callAll('animations.add', 'animations', 'walkt', [ 0, 1 ],6, true);
 			star.callAll('animations.play', 'animations', 'walkt');
 			star.setAll('body.bounce.x', 1);
