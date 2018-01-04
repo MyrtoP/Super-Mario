@@ -39,13 +39,14 @@ body {
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/rayman.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/rsz_newcoins1.png', 16, 16);
-			this.load.spritesheet('evil','assets/starss.png',16,16);
+			this.load.spritesheet('star','assets/starss.png',16,16);
 			this.load.spritesheet('heart','assets/heart.png',16,16);
 			
 			//load map   
 			this.load.tilemap('level', 'assets/level222.json', null,Phaser.Tilemap.TILED_JSON);
 			//load music
-			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
+			this.load.audio('sfx', [ 'audio/Rayman Legends Soundtrack - Mariachi Madness.mp3',
+						'audio/Rayman Legends Soundtrack - Mariachi Madness.mp3.ogg' ]);
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
@@ -98,15 +99,15 @@ body {
 			goombas.setAll('body.gravity.y', 500);
 			
 			
-			//evil
-			evil = game.add.group();
-			evil.enableBody = true;
-			map.createFromTiles(3, null, 'evil', 'stuff',evil);
-			evil.callAll('animations.add', 'animations', 'walkt', [ 0, 1 ],6, true);
-			evil.callAll('animations.play', 'animations', 'walkt');
-			evil.setAll('body.bounce.x', 1);
-			evil.setAll('body.velocity.x', -20);
-			evil.setAll('body.gravity.y', 500);
+			//star
+			star = game.add.group();
+			star.enableBody = true;
+			map.createFromTiles(3, null, 'evil', 'stuff',star);
+			star.callAll('animations.add', 'animations', 'walkt', [ 0, 1 ],6, true);
+			star.callAll('animations.play', 'animations', 'walkt');
+			star.setAll('body.bounce.x', 1);
+			star.setAll('body.velocity.x', -20);
+			star.setAll('body.gravity.y', 500);
 			
 			
 			//player
@@ -125,9 +126,9 @@ body {
 			scoreDisplay = game.add.text(10, 10, 'Score: 0', { fontSize: '12px', fill: '#FFFFFF'});
 			scoreDisplay.fixedToCamera = true;
 			
-			 //Lives text
-		         livesText = game.add.text(80,10, 'Lives:       3 ', { fontSize: '12px', fill: '#FFFFFF'});
-			 livesText.fixedToCamera = true;
+			//Lives text
+		        livesText = game.add.text(80,10, 'Lives:       3 ', { fontSize: '12px', fill: '#FFFFFF'});
+			livesText.fixedToCamera = true;
 			
 			//create heart sprite
 			Livespite = game.add.sprite(118,10,'heart');
@@ -145,7 +146,6 @@ body {
 			
 			//create teleport text
 			teleportxt = game.add.text(300,110,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
-			Livespite.fixedToCamera = tue;
 			
 		}
 		
@@ -153,11 +153,11 @@ body {
 			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
-			game.physics.arcade.collide(evil, layer);
+			game.physics.arcade.collide(star, layer);
 						
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.overlap(player, evil, evilOverlap);
+			game.physics.arcade.overlap(player, star, starOverlap);
 			
 			//player movement
 			if (player.body.enable) {
@@ -189,16 +189,17 @@ body {
 				}
 			}
 		       //teleport
-					if(player.body.onFloor() && cursors.down.isDown && player.x > 20*16  && player.x < 21*16){
-						teleportxt.text = teleportxt + " " ;
-				     		player.reset(76*16,6*16);
+			if(player.body.onFloor() && cursors.down.isDown && player.x > 20*16  && player.x < 21*16)
+			{
+				teleportxt.text = teleportxt + " " ;
+				player.reset(76*16,6*16);
 		        }
 		        //end level 
 			if(player.body.onFloor() && cursors.down.isDown){
-						if (player.x < 2032 && player.x > 2016){
-						     backgroundAudio.stop();
-						     alert('YOU WIN!\n Press F5 to reload');
-			              }
+				if (player.x < 2032 && player.x > 2016){
+					     backgroundAudio.stop();
+					     alert('YOU WIN!\n Press F5 to reload');
+			         }
 			   }
                 } 
 			
@@ -211,7 +212,7 @@ body {
 			scoreDisplay.text = "Score: " + score; 
 		}
 				
-        	function evilOverlap(player, evil) {
+        	function starOverlap(player, star) {
 				star.frame = 2;
 				lives --;
 				livesText.text = "Lives:       " + lives;
@@ -223,6 +224,7 @@ body {
 					{
 						music.stop();
 						theme.stop();
+						alert('Ooops!! GAME OVER! \nPress F5 to reload.');
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
