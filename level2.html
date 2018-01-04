@@ -45,7 +45,7 @@ body {
 			//load map   
 			this.load.tilemap('level', 'assets/level222.json', null,Phaser.Tilemap.TILED_JSON);
 			//load music
-			this.load.audio('sfx', [ 'audio/Rayman Legends Soundtrack - Mariachi Madness.mp3','audio/Rayman Legends Soundtrack - Mariachi Madness.mp3.ogg' ]);
+			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
 			//load background image
 			game.load.image("background", "assets/picture.png");
@@ -139,7 +139,8 @@ body {
 			bonusText.fixedToCamera = true;
 			
 			//GAME OVER text
-			go = game.add.text(170, 10, ' ', {fontSize: '12px', fill:'#0B2F3A'});
+			go = game.add.text(170, 10, ' ', {fontSize: '12px', fill:'#FFFFFF'});
+			go.fixedToCamera = false;
 			go.visible = false;
 			
 			//create teleport text
@@ -261,9 +262,10 @@ body {
 					if(lives <= 0){
 						music.stop();
 						game.paused = true;
-						//alert('GAME OVER!\n Press F5 to reload');
-						go.text = "GAME OVER!" + go;
-						go.visible = true;
+						alert('GAME OVER!\n Press F5 to reload');
+					//	go.text = "GAME OVER!" + go;
+						//go.visible = true;
+						theme.stop();
 					}
 					else
 					{
