@@ -262,7 +262,7 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						music.stop();
+						sfx.stop();
 						game.paused = true;
 						alert('GAME OVER!\n Press F5 to reload');
 					//	go.text = "GAME OVER!" + go;
