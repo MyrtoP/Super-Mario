@@ -213,6 +213,7 @@ body {
 						 player.animations.stop();
 					     //win.enableBody = true;
 					    button.enableBody = true;
+						alert("YOU WIN!");
                 // button = game.add.button((10 * 16) -2, (18 * 16), 'button', actionOnClick, this, 2, 1, 0);
                  // game.state.start("https://github.com/MyrtoP/Super-Mario/level2.html");
 						//<meta http-equiv="refresh" content="0; url=https://github.com/MyrtoP/Super-Mario/level2.html" />
@@ -243,7 +244,8 @@ body {
 					if(lives <= 0)
 					{
 						music.stop();
-				    	gameOver.enableBody = true;
+				    	        gameOver.enableBody = true;
+						alert("GAME OVER!  PRESS F5");
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -283,6 +285,7 @@ body {
 					if(lives <= 0){
 						music.stop();
 						gameOver.enableBody = true;
+						alert("GAME OVER!  PRESS F5");
 					}
 					else
 					{
