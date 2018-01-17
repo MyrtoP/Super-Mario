@@ -263,11 +263,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
 						music.stop();
-						//game.paused = true;
 						theme.stop();
 						alert('GAME OVER!\n Press F5 to reload');
-					//	go.text = "GAME OVER!" + go;
-						//go.visible = true;
 					}
 					else
 					{
