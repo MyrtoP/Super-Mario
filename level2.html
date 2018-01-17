@@ -138,11 +138,6 @@ body {
 			bonusText = game.add.text(170, 10, 'Bonus: 0', {fontSize: '12px', fill:'#FFFFFF'});
 			bonusText.fixedToCamera = true;
 			
-			//GAME OVER text
-			go = game.add.text(170, 10, ' ', {fontSize: '12px', fill:'#FFFFFF'});
-			go.fixedToCamera = false;
-			go.visible = false;
-			
 			//create teleport text
 			teleportxt = game.add.text(300,110,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
@@ -221,8 +216,6 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-						//music.stop();
-						//theme.stop();
 						alert("Ooops!! GAME OVER! \nPress F5 to reload");
 					}else{
 						player.frame=0;
@@ -261,8 +254,6 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						//music.stop();
-						theme.stop();
 						alert("GAME OVER!\n Press F5 to reload");
 					}
 					else
