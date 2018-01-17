@@ -233,8 +233,8 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-						music.stop();
-				    	        gameOver.enableBody = true;
+				    	        //gameOver.enableBody = true;
+						backgroundAudio.stop();
 						alert("GAME OVER!\n PRESS F5 to play again");
 					}else{
 						player.frame=0;
@@ -273,8 +273,9 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						music.stop();
-						gameOver.enableBody = true;
+						//music.stop();
+						backgroundAudio.stop();
+						//gameOver.enableBody = true;
 						alert("GAME OVER!\n PRESS F5 to play again");
 					}
 					else
