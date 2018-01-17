@@ -200,7 +200,6 @@ body {
 			if(player.body.onFloor() && cursors.down.isDown){
 					if (player.x < 2032 && player.x > 2016){
 					     theme.stop();
-					     backgroundAudio.stop();
 					     player.body.enable = false;
 					     player.animations.stop();
 					    button.enableBody = true;
@@ -233,8 +232,6 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-				    	        //gameOver.enableBody = true;
-						backgroundAudio.stop();
 						alert("GAME OVER!\n PRESS F5 to play again");
 					}else{
 						player.frame=0;
@@ -273,9 +270,6 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						//music.stop();
-						backgroundAudio.stop();
-						//gameOver.enableBody = true;
 						alert("GAME OVER!\n PRESS F5 to play again");
 					}
 					else
