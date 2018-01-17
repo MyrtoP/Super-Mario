@@ -28,7 +28,6 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var teleportxt;
-	          var go;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -222,9 +221,9 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 2, function() {
 					if(lives <= 0)
 					{
-						music.stop();
+						//music.stop();
 						theme.stop();
-						alert('Ooops!! GAME OVER! \nPress F5 to reload.');
+						alert("Ooops!! GAME OVER! \nPress F5 to reload");
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -262,9 +261,9 @@ body {
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 					if(lives <= 0){
-						music.stop();
+						//music.stop();
 						theme.stop();
-						alert('GAME OVER!\n Press F5 to reload');
+						alert("GAME OVER!\n Press F5 to reload");
 					}
 					else
 					{
