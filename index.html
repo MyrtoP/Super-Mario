@@ -204,7 +204,7 @@ body {
 					     player.body.enable = false;
 					     player.animations.stop();
 					    button.enableBody = true;
-					    alert("YOU WIN!");
+					    alert("Congratulations!!YOU WIN!");
                 // button = game.add.button((10 * 16) -2, (18 * 16), 'button', actionOnClick, this, 2, 1, 0);
                  // game.state.start("https://github.com/MyrtoP/Super-Mario/level2.html");
 			                }
@@ -235,7 +235,7 @@ body {
 					{
 						music.stop();
 				    	        gameOver.enableBody = true;
-						alert("GAME OVER!  PRESS F5");
+						alert("GAME OVER!\n PRESS F5 to play again");
 					}else{
 						player.frame=0;
 						player.reset(16,game.world.height-48);
@@ -275,7 +275,7 @@ body {
 					if(lives <= 0){
 						music.stop();
 						gameOver.enableBody = true;
-						alert("GAME OVER!  PRESS F5");
+						alert("GAME OVER!\n PRESS F5 to play again");
 					}
 					else
 					{
