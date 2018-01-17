@@ -29,8 +29,6 @@ body {
 		  var bonus = 0;
 		  var bonusText;
 		  var teleportxt;
-		  var gameOver;
-		  var win;
 		
 		function preload() {
 			this.load.baseURL = 'https://myrtop.github.io/Super-Mario/';
@@ -53,8 +51,6 @@ body {
 			game.load.image("background", "assets/picture.png");
 			this.load.spritesheet('end','assets/images.jpg',16,16);
 			game.load.image("congrats","assets/congrats.jpg");
-			
-			game.load.spritesheet('button',"assets/continue.png",16,16);
 			
 		}
 		function create() {
@@ -146,9 +142,6 @@ body {
 			//create teleport text
 			teleportxt = game.add.text(414,67,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
-// 		        button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
-// 			button.enableBody = false;
-
 		}
 		
 		function update(){
@@ -201,18 +194,11 @@ body {
 					if (player.x < 2032 && player.x > 2016){
 					     player.body.enable = false;
 					     player.animations.stop();
-// 					    button.enableBody = true;
-						window.open("https://myrtop.github.io/Super-Mario/level2.html","_self");
-// 					    alert("Congratulations!!YOU WIN!");
-//                  			button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
-                 // game.state.start("https://github.com/MyrtoP/Super-Mario/level2.html");
+					     window.open("https://myrtop.github.io/Super-Mario/level2.html","_self");
 			                }
 			  	 }
                   } 
 			
-		  function actionOnClick () {
-                     location.href = "https://github.com/MyrtoP/Super-Mario/level2.html";
-					}	
 		function coinOverlap(player, coin) {
 			coin.kill();
 			var coinSound = new Audio('audio/coin.wav');
