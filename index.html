@@ -49,14 +49,12 @@ body {
 			//load music
 			this.load.audio('sfx', [ 'audio/Rayman Raving Rabbids - Misirlou.mp3','audio/Rayman Raving Rabbids - Misirlou.mp3.ogg' ]);
 			
-			//load background image,game over and congratulation for ending the level
+			//load background image
 			game.load.image("background", "assets/picture.png");
-			//game.load.image("end","assets/game-over.png"); 
-			//game.load.image("end","assets/images.jpg");
 			this.load.spritesheet('end','assets/images.jpg',16,16);
 			game.load.image("congrats","assets/congrats.jpg");
 			
-			game.load.spritesheet('button',"extensions/imageedit_2_5951099168.png",16,16);
+			//game.load.spritesheet('button',"extensions/imageedit_2_5951099168.png",16,16);
 			
 		}
 		function create() {
@@ -148,14 +146,8 @@ body {
 			//create teleport text
 			teleportxt = game.add.text(414,67,'Try Down!',{font: "textile",fontSize:'12px', fill:'#FFFFFF'});
 			
-			
-			 //gameOver = game.add.sprite(100, 50,'end');
-			// gameOver.enableBody = false;
-		
-			 //win = game.add.sprite( 0, 0,'congrats');
-			 //win.enableBody = false;
-			  button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
-			  button.enableBody = false;
+		        button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
+			button.enableBody = false;
 
 		}
 		
@@ -200,23 +192,21 @@ body {
 			}
 			
 		       //teleport
-					if(player.body.onFloor() && cursors.down.isDown && player.x > 27*16  && player.x < 28*16 ){
+				if(player.body.onFloor() && cursors.down.isDown && player.x > 27*16  && player.x < 28*16 ){
 						teleportxt.text = teleportxt + " " ;
 				     		player.reset(79*16,7*16);
 		        }
-		        //end level and emitter
+		        //end level 
 			if(player.body.onFloor() && cursors.down.isDown){
 					if (player.x < 2032 && player.x > 2016){
-						theme.stop();
+					     theme.stop();
 					     backgroundAudio.stop();
 					     player.body.enable = false;
-						 player.animations.stop();
-					     //win.enableBody = true;
+					     player.animations.stop();
 					    button.enableBody = true;
-						alert("YOU WIN!");
+					    alert("YOU WIN!");
                 // button = game.add.button((10 * 16) -2, (18 * 16), 'button', actionOnClick, this, 2, 1, 0);
                  // game.state.start("https://github.com/MyrtoP/Super-Mario/level2.html");
-						//<meta http-equiv="refresh" content="0; url=https://github.com/MyrtoP/Super-Mario/level2.html" />
 			                }
 			  	 }
                   } 
